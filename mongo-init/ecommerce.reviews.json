@@ -1,0 +1,40 @@
+[{
+  "_id": {
+    "$oid": "692888bd1d1719ce3e0adc25"
+  },
+  "user": {
+    "$oid": "69287ea9a2ee128cf0594c60"
+  },
+  "product": {
+    "$oid": "68f100000000000000000026"
+  },
+  "rating": 5,
+  "comment": "sản phẩm đẹp, tốtt",
+  "createdAt": {
+    "$date": "2025-11-27T17:22:05.505Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T15:50:29.883Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6929ba1bf09a082d2615641c"
+  },
+  "user": {
+    "$oid": "69287ea9a2ee128cf0594c60"
+  },
+  "product": {
+    "$oid": "6901d3b881f25a054af61d14"
+  },
+  "rating": 4,
+  "comment": "Sản phẩm đẹp",
+  "createdAt": {
+    "$date": "2025-11-28T15:04:59.639Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T15:04:59.639Z"
+  },
+  "__v": 0
+}]

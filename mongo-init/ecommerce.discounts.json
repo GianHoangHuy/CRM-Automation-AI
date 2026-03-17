@@ -1,0 +1,21 @@
+[{
+  "_id": {
+    "$oid": "68de953bbb4ac25f533bbd9a"
+  },
+  "code": "SUM10",
+  "value": 10,
+  "usageLimit": 10,
+  "usedCount": 1,
+  "updatedAt": {
+    "$date": "2025-11-27T14:11:42.864Z"
+  }
+},
+{
+  "_id": {
+    "$oid": "68de953bbb4ac25f533bbd9c"
+  },
+  "code": "FLASH",
+  "value": 5,
+  "usageLimit": 10,
+  "usedCount": 0
+}]

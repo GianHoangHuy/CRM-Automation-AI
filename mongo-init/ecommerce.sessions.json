@@ -1,0 +1,7 @@
+[{
+  "_id": "Yj7DwCRp9US09efb-X6PMMVq-6jWnqMs",
+  "expires": {
+    "$date": "2025-11-29T15:50:18.153Z"
+  },
+  "session": "{\"cookie\":{\"originalMaxAge\":86400000,\"expires\":\"2025-11-29T15:50:18.153Z\",\"httpOnly\":true,\"path\":\"/\"},\"passport\":{\"user\":\"69287ea9a2ee128cf0594c60\"}}"
+}]

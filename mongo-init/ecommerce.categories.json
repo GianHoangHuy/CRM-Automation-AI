@@ -1,0 +1,47 @@
+[{
+  "_id": {
+    "$oid": "68d9582f475f99782d11ddc1"
+  },
+  "name": "Laptop",
+  "slug": "laptop",
+  "description": "Danh mục Laptop cung cấp đa dạng các dòng máy tính xách tay từ văn phòng, học tập cho đến gaming cấu hình cao. Người dùng có thể tìm thấy laptop từ các thương hiệu uy tín như Dell, HP, Asus, Acer và Apple. Mỗi sản phẩm đều đi kèm thông tin chi tiết về CPU, RAM, dung lượng ổ cứng, card đồ họa, kích thước màn hình và thời lượng pin để đáp ứng nhiều mục đích sử dụng khác nhau."
+},
+{
+  "_id": {
+    "$oid": "68d9582f475f99782d11ddc2"
+  },
+  "name": "Phụ kiện",
+  "slug": "phu-kien",
+  "description": "Danh mục Phụ kiện bao gồm nhiều sản phẩm hỗ trợ thiết bị chính như tai nghe, loa bluetooth, chuột, bàn phím, sạc dự phòng, cáp sạc và ốp lưng. Đây là nơi người dùng có thể tìm thấy những sản phẩm nhỏ gọn nhưng rất cần thiết, giúp tăng trải nghiệm sử dụng thiết bị công nghệ hằng ngày. Tất cả phụ kiện đều có mô tả chi tiết về tính năng, độ bền, khả năng tương thích và chế độ bảo hành."
+},
+{
+  "_id": {
+    "$oid": "68d9582f475f99782d11ddc4"
+  },
+  "name": "Âm thanh",
+  "slug": "am-thanh",
+  "description": "Danh mục Âm thanh bao gồm các sản phẩm như tai nghe không dây, loa bluetooth, loa soundbar và dàn âm thanh gia đình. Mỗi thiết bị được thiết kế nhằm mang lại trải nghiệm âm nhạc sống động, chất lượng cao với công nghệ tiên tiến như chống ồn, kết nối nhanh và thời lượng pin ấn tượng. Phù hợp cho nhu cầu giải trí, học tập hoặc làm việc."
+},
+{
+  "_id": {
+    "$oid": "68d9582f475f99782d11ddc5"
+  },
+  "name": "Đồng hồ thông minh",
+  "slug": "dong-ho-thong-minh",
+  "description": "Danh mục Đồng hồ thông minh cung cấp các mẫu smartwatch hiện đại giúp người dùng theo dõi sức khỏe, nhận thông báo, nghe gọi và điều khiển thiết bị thông minh. Các sản phẩm từ Apple, Samsung, Xiaomi, Garmin… đều có thiết kế thời trang, khả năng chống nước và nhiều chế độ tập luyện. Thông tin chi tiết về cảm biến, dung lượng pin và tính năng theo dõi sức khỏe được cung cấp đầy đủ."
+},
+{
+  "_id": {
+    "$oid": "6901d157c092af8bb7fc07a5"
+  },
+  "name": "Linh kiện máy tính",
+  "slug": "linh-kien-may-tinh",
+  "description": "Danh mục Linh kiện máy tính bao gồm các bộ phận phần cứng thiết yếu và phụ trợ dùng để lắp ráp, nâng cấp hoặc sửa chữa máy tính để bàn và laptop. Các sản phẩm trong nhóm này có thể bao gồm bộ vi xử lý (CPU), bo mạch chủ (Mainboard), bộ nhớ RAM, ổ cứng SSD/HDD, card đồ họa (GPU), bộ nguồn (PSU), quạt tản nhiệt, và nhiều linh kiện khác. Mỗi linh kiện đóng vai trò quan trọng trong việc đảm bảo hiệu năng, độ bền và khả năng mở rộng của hệ thống máy tính, phục vụ cho nhiều mục đích khác nhau như học tập, làm việc, thiết kế đồ họa hay chơi game.",
+  "createdAt": {
+    "$date": "2025-10-29T08:33:27.457Z"
+  },
+  "updatedAt": {
+    "$date": "2025-10-29T08:36:27.477Z"
+  },
+  "__v": 0
+}]

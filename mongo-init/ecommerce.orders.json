@@ -1,0 +1,188 @@
+[{
+  "_id": {
+    "$oid": "69285c1e625bfaa1fff785f5"
+  },
+  "user": {
+    "$oid": "692857c8625bfaa1fff783eb"
+  },
+  "name": "Lý Tiểu Long",
+  "email": "lytieulong03102004@gmail.com",
+  "items": [
+    {
+      "product": {
+        "$oid": "68f100000000000000000023"
+      },
+      "variantId": {
+        "$oid": "68f110000000000000000045"
+      },
+      "name": "Chuột Logitech MX Master 3S",
+      "quantity": 1,
+      "price": 2490000,
+      "subTotal": 2490000,
+      "_id": {
+        "$oid": "69285b6c625bfaa1fff7854a"
+      }
+    }
+  ],
+  "shippingAddress": {
+    "addressId": null,
+    "phone": "0364127144",
+    "street": "2145",
+    "city": "Đồng Nai",
+    "country": "Việt Nam"
+  },
+  "paymentMethod": "COD",
+  "discountAmount": 249000,
+  "discount": {
+    "$oid": "68de953bbb4ac25f533bbd9a"
+  },
+  "pointsUsed": 0,
+  "pointsEarned": 227,
+  "totalPrice": 2271000,
+  "status": "confirmed",
+  "statusHistory": [
+    {
+      "status": "pending",
+      "updatedAt": {
+        "$date": "2025-11-27T14:11:42.868Z"
+      },
+      "_id": {
+        "$oid": "69285c1e625bfaa1fff785f7"
+      }
+    },
+    {
+      "status": "confirmed",
+      "updatedAt": {
+        "$date": "2025-11-27T14:15:46.982Z"
+      },
+      "_id": {
+        "$oid": "69285d12625bfaa1fff7862f"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-27T14:11:42.875Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-27T14:15:46.985Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "692885e01d1719ce3e0adaa5"
+  },
+  "user": {
+    "$oid": "69287ea9a2ee128cf0594c60"
+  },
+  "name": "Giản Hoàng Huy",
+  "email": "huygianhoang2007@gmail.com",
+  "items": [
+    {
+      "product": {
+        "$oid": "68f100000000000000000026"
+      },
+      "variantId": {
+        "$oid": "68f110000000000000000051"
+      },
+      "name": "SSD Samsung 990 PRO 1TB",
+      "quantity": 1,
+      "price": 3290000,
+      "subTotal": 3290000,
+      "_id": {
+        "$oid": "692885c31d1719ce3e0ada7c"
+      }
+    }
+  ],
+  "shippingAddress": {
+    "addressId": null,
+    "phone": "09876543321",
+    "street": "923/32 Lê Văn Lương",
+    "city": "TP HCM",
+    "country": "Việt Nam"
+  },
+  "paymentMethod": "COD",
+  "discountAmount": 0,
+  "discount": null,
+  "pointsUsed": 0,
+  "pointsEarned": 332,
+  "totalPrice": 3320000,
+  "status": "pending",
+  "statusHistory": [
+    {
+      "status": "pending",
+      "updatedAt": {
+        "$date": "2025-11-27T17:09:52.612Z"
+      },
+      "_id": {
+        "$oid": "692885e01d1719ce3e0adaa7"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-27T17:09:52.620Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-27T17:09:52.620Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "692886341d1719ce3e0adafd"
+  },
+  "user": {
+    "$oid": "69287ea9a2ee128cf0594c60"
+  },
+  "name": "Giản Hoàng Huy",
+  "email": "huygianhoang2007@gmail.com",
+  "items": [
+    {
+      "product": {
+        "$oid": "6901d3b881f25a054af61d14"
+      },
+      "variantId": {
+        "$oid": "6901d3b881f25a054af61d15"
+      },
+      "name": "Intel Core i9-14900K",
+      "quantity": 2,
+      "price": 14990000,
+      "subTotal": 29980000,
+      "_id": {
+        "$oid": "692886251d1719ce3e0adadc"
+      }
+    }
+  ],
+  "shippingAddress": {
+    "addressId": null,
+    "phone": "09876543321",
+    "street": "923/32 Lê Văn Lương",
+    "city": "TP HCM",
+    "country": "Việt Nam"
+  },
+  "paymentMethod": "COD",
+  "discountAmount": 0,
+  "discount": null,
+  "pointsUsed": 332,
+  "pointsEarned": 2967,
+  "totalPrice": 29678000,
+  "status": "pending",
+  "statusHistory": [
+    {
+      "status": "pending",
+      "updatedAt": {
+        "$date": "2025-11-27T17:11:16.775Z"
+      },
+      "_id": {
+        "$oid": "692886341d1719ce3e0adaff"
+      }
+    }
+  ],
+  "createdAt": {
+    "$date": "2025-11-27T17:11:16.780Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-27T17:11:16.780Z"
+  },
+  "__v": 0
+}]

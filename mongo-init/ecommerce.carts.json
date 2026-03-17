@@ -1,0 +1,62 @@
+[{
+  "_id": {
+    "$oid": "69285ac9625bfaa1fff78477"
+  },
+  "user": {
+    "$oid": "692857c8625bfaa1fff783eb"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "68f100000000000000000026"
+      },
+      "variantId": {
+        "$oid": "68f110000000000000000051"
+      },
+      "quantity": 1,
+      "_id": {
+        "$oid": "69285b49625bfaa1fff78500"
+      }
+    }
+  ],
+  "discount": {
+    "$oid": "68de953bbb4ac25f533bbd9a"
+  },
+  "createdAt": {
+    "$date": "2025-11-27T14:06:01.832Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-27T14:11:42.888Z"
+  },
+  "__v": 5
+},
+{
+  "_id": {
+    "$oid": "692885c31d1719ce3e0ada77"
+  },
+  "user": {
+    "$oid": "69287ea9a2ee128cf0594c60"
+  },
+  "items": [
+    {
+      "product": {
+        "$oid": "68f100000000000000000020"
+      },
+      "variantId": {
+        "$oid": "68f110000000000000000039"
+      },
+      "quantity": 1,
+      "_id": {
+        "$oid": "6929c4ce667944ea72a82fc8"
+      }
+    }
+  ],
+  "discount": null,
+  "createdAt": {
+    "$date": "2025-11-27T17:09:23.794Z"
+  },
+  "updatedAt": {
+    "$date": "2025-11-28T15:50:49.241Z"
+  },
+  "__v": 5
+}]
