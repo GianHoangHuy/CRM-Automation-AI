@@ -19,7 +19,7 @@ for file in /data/ecommerce.*.json; do
                     --username root \
                     --password password123 \
                     --authenticationDatabase admin \
-                    --db ecommerce_db \
+                    --db ecommerce \
                     --collection "$collection_name" \
                     --type json \
                     --file "$file" \

@@ -6,7 +6,7 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: password123
-      MONGO_INITDB_DATABASE: ecommerce_db
+      MONGO_INITDB_DATABASE: ecommerce
     ports:
       - "27017:27017"
     volumes:
@@ -38,7 +38,7 @@ services:
       - "5000:5000"
     environment:
       PORT: 5000
-      MONGO_URI: mongodb://root:password123@mongodb:27017/ecommerce_db?authSource=admin
+      MONGO_URI: mongodb://root:password123@mongodb:27017/ecommerce?authSource=admin
       JWT_SECRET: YOUR_JWT_SECRET
       SESSION_SECRET: YOUR_SESSION_SECRET
       FRONTEND_URL: http://localhost:3000
