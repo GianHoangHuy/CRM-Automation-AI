@@ -748,4 +748,402 @@
   "updatedAt": {
     "$date": "2025-11-28T15:50:29.892Z"
   }
-}]
+},
+
+  {
+    "_id": {
+      "$oid": "68f100000000000000000081"
+    },
+    "name": "HP Omen 16 - Core i7, RAM 16GB",
+    "slug": "hp-omen-16-i7-16gb",
+    "description": "Laptop Gaming cao cấp từ HP với chip Intel Core i7, card đồ họa RTX 4060 và RAM 16GB. Màn hình tần số quét cao giúp soi rõ từng góc kê tâm, chiến mượt mọi tựa game eSports FPS hiện nay như CS2 hay Valorant.",
+    "category": {
+      "$oid": "68d9582f475f99782d11ddc1"
+    },
+    "price": 35990000,
+    "variants": [
+      {
+        "_id": {
+          "$oid": "68f110000000000000000081"
+        },
+        "sku": "OMEN16-16GB-512GB",
+        "name": "16GB/512GB",
+        "price": 35990000,
+        "stock": 10,
+        "attributes": [
+          {
+            "key": "Màu",
+            "value": "Đen Nhám"
+          }
+        ]
+      }
+    ],
+    "brand": "HP",
+    "images": [
+      "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=500&q=80",
+      "https://cdn.tgdd.vn/Products/Images/44/308118/hp-omen-16-n0087ax-r7-7c0t7pa-thumb-600x600.jpg",
+      "https://xgear.net/wp-content/uploads/2023/08/Omen-16-2023-Intel-3.jpg"
+    ],
+    "rating": 0,
+    "numReviews": 0,
+    "numComments": 0,
+    "createdAt": {
+      "$date": "2026-03-29T08:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-03-29T08:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "68f100000000000000000082"
+    },
+    "name": "HP Victus 15 - Ryzen 7, RAM 16GB",
+    "slug": "hp-victus-15-r7-16gb",
+    "description": "Laptop Gaming quốc dân siêu ngon trong tầm giá. Trang bị card đồ họa rời và RAM 16GB đa nhiệm cực tốt, xử lý nhẹ nhàng các pha combat tổng khi đi rừng hoặc đi top trong Liên Minh Huyền Thoại.",
+    "category": {
+      "$oid": "68d9582f475f99782d11ddc1"
+    },
+    "price": 22490000,
+    "variants": [
+      {
+        "_id": {
+          "$oid": "68f110000000000000000082"
+        },
+        "sku": "VICTUS15-16GB-512GB",
+        "name": "16GB/512GB",
+        "price": 22490000,
+        "stock": 15,
+        "attributes": [
+          {
+            "key": "Màu",
+            "value": "Xanh Đen"
+          }
+        ]
+      }
+    ],
+    "brand": "HP",
+    "images": [
+      "https://cdnv2.tgdd.vn/mwg-static/tgdd/Products/Images/44/341623/hp-victus-15-fb3116ax-r7-7445hs-bx8u4pa-1-638936185782817746-750x500.jpg",
+      "https://cdn.tgdd.vn/Products/Images/44/311145/hp-victus-15-fb1022ax-r5-8c5l0pa-thumb-600x600.jpg",
+      "https://laptopaz.vn/media/product/2903_hp_victus_15_fa0031dx_1_laptopaz.jpg"
+    ],
+    "rating": 0,
+    "numReviews": 0,
+    "numComments": 0,
+    "createdAt": {
+      "$date": "2026-03-29T08:05:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-03-29T08:05:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "68f100000000000000000083"
+    },
+    "name": "HP Pavilion 15 - Core i5, RAM 8GB",
+    "slug": "hp-pavilion-15-i5-8gb",
+    "description": "Laptop sinh viên, nhân viên văn phòng lý tưởng. Cấu hình ổn định với RAM 8GB, thiết kế mỏng nhẹ, sang trọng với nắp lưng kim loại.",
+    "category": {
+      "$oid": "68d9582f475f99782d11ddc1"
+    },
+    "price": 16990000,
+    "variants": [
+      {
+        "_id": {
+          "$oid": "68f110000000000000000083"
+        },
+        "sku": "PAV15-8GB-512GB",
+        "name": "8GB/512GB",
+        "price": 16990000,
+        "stock": 25,
+        "attributes": [
+          {
+            "key": "Màu",
+            "value": "Bạc"
+          }
+        ]
+      }
+    ],
+    "brand": "HP",
+    "images": [
+      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=500&q=80",
+      "https://cdn.tgdd.vn/Products/Images/44/302146/hp-pavilion-15-eg2056tu-i5-6k786pa-thumb-600x600.jpg",
+      "https://laptop88.vn/media/product/8276_hp_pavilion_15_eg3093tu_8c5l4pa.jpg"
+    ],
+    "rating": 0,
+    "numReviews": 0,
+    "numComments": 0,
+    "createdAt": {
+      "$date": "2026-03-29T08:10:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-03-29T08:10:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "68f100000000000000000091"
+    },
+    "name": "Ổ cứng SSD WD Black SN850X 2TB PCIe Gen 4",
+    "slug": "wd-black-sn850x-2tb",
+    "description": "Ổ cứng SSD siêu tốc độ dành cho hệ thống PC High-end. Tốc độ đọc lên tới 7300MB/s, giúp load game siêu nhanh, thả khói hay spam skill cường độ cao không bao giờ lo giật lag hay rớt FPS.",
+    "category": {
+      "$oid": "6901d157c092af8bb7fc07a5"
+    },
+    "price": 4590000,
+    "variants": [
+      {
+        "_id": {
+          "$oid": "68f110000000000000000091"
+        },
+        "sku": "WDBLACK-2TB",
+        "name": "2TB",
+        "price": 4590000,
+        "stock": 12,
+        "attributes": [
+          {
+            "key": "Dung lượng",
+            "value": "2TB"
+          }
+        ]
+      }
+    ],
+    "brand": "Western Digital",
+    "images": [
+      "https://product.hstatic.net/200000722513/product/o-cung-ssd-wd-black-sn850x-1tb-m2-pcie-4.0-wds100t2x0e-hinh-6_9fcfa09c0e494107ba661b3a975555e9_grande.png",
+      "https://techspace.vn/wp-content/uploads/2022/12/WD_BLACK_SN850X_NVMe_SSD_2TB_1.jpg",
+      "https://nguyencongpc.vn/media/product/23304-ssd-wd-black-sn850x-1tb-m2-2280-pcie-nvme-gen-4x4-wds100t2x0e.jpg"
+    ],
+    "rating": 5,
+    "numReviews": 2,
+    "numComments": 1,
+    "createdAt": {
+      "$date": "2026-03-29T20:00:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-03-29T20:00:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "68f100000000000000000092"
+    },
+    "name": "Ổ cứng SSD Kingston NV2 1TB PCIe 4.0",
+    "slug": "kingston-nv2-1tb",
+    "description": "Lựa chọn SSD quốc dân ngon - bổ - rẻ. Dung lượng 1TB thoải mái lưu trữ source code đồ án, phần mềm nặng và cài đặt các tựa game MOBA, FPS phổ biến hiện nay.",
+    "category": {
+      "$oid": "6901d157c092af8bb7fc07a5"
+    },
+    "price": 1450000,
+    "variants": [
+      {
+        "_id": {
+          "$oid": "68f110000000000000000092"
+        },
+        "sku": "SNV2S-1000G",
+        "name": "1TB",
+        "price": 1450000,
+        "stock": 30,
+        "attributes": [
+          {
+            "key": "Dung lượng",
+            "value": "1TB"
+          }
+        ]
+      }
+    ],
+    "brand": "Kingston",
+    "images": [
+      "https://media.kingston.com/kingston/press/ktc-press-fe-nv2-ssd.jpg",
+      "https://cdn.tgdd.vn/Products/Images/8695/293240/o-cung-ssd-m2-pcie-gen4-nvme-1tb-kingston-nv2-thumb-1-600x600.jpg",
+      "https://memoryzone.com.vn/storage/san-pham/ssd/kingston/nv2/ssd-kingston-nv2-1tb-pcie-gen4-x4-nvme-m2-snv2s-1000g.jpg"
+    ],
+    "rating": 4,
+    "numReviews": 5,
+    "numComments": 2,
+    "createdAt": {
+      "$date": "2026-03-29T20:05:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-03-29T20:05:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "68f100000000000000000093"
+    },
+    "name": "Ổ cứng SSD Crucial P3 Plus 500GB",
+    "slug": "crucial-p3-plus-500gb",
+    "description": "Giải pháp nâng cấp tốc độ hoàn hảo với ngân sách sinh viên. Boot Win trong tích tắc, mở Visual Studio hay Docker mượt mà không phải chờ đợi.",
+    "category": {
+      "$oid": "6901d157c092af8bb7fc07a5"
+    },
+    "price": 950000,
+    "variants": [
+      {
+        "_id": {
+          "$oid": "68f110000000000000000093"
+        },
+        "sku": "CT500P3PSSD8",
+        "name": "500GB",
+        "price": 950000,
+        "stock": 20,
+        "attributes": [
+          {
+            "key": "Dung lượng",
+            "value": "500GB"
+          }
+        ]
+      }
+    ],
+    "brand": "Crucial",
+    "images": [
+      "https://bizweb.dktcdn.net/100/329/122/products/ssd-crucial-p3-plus-500gb-nvme-3d-nand-m-2-pcie-gen4-x4-ct500p3pssd8-1-a0396efb-4305-436d-a9b1-76c856f60da3-6082ea1b-9e07-486c-9924-504bbb8a0ae4-c768345e-7321-49ec-baa4-7e4728e7b6e0.jpg?v=1689672441197",
+      "https://memoryzone.com.vn/storage/san-pham/ssd/crucial/p3-plus/ssd-crucial-p3-plus-500gb-pcie-gen4-x4-nvme-m2-ct500p3pssd8-3.jpg",
+      "https://xgear.net/wp-content/uploads/2023/12/SSD-Crucial-P3-Plus-1.jpg"
+    ],
+    "rating": 4,
+    "numReviews": 1,
+    "numComments": 0,
+    "createdAt": {
+      "$date": "2026-03-29T20:10:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-03-29T20:10:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "68f100000000000000000094"
+    },
+    "name": "RAM Corsair Vengeance RGB 32GB (2x16GB) DDR5 6000MHz",
+    "slug": "corsair-vengeance-rgb-32gb-ddr5",
+    "description": "Kit RAM DDR5 hiệu năng cao, tích hợp LED RGB đồng bộ tuyệt đẹp. Xử lý đa nhiệm hoàn hảo, bật chục tab Chrome vừa check docs vừa code vẫn không hề hấn gì.",
+    "category": {
+      "$oid": "6901d157c092af8bb7fc07a5"
+    },
+    "price": 3200000,
+    "variants": [
+      {
+        "_id": {
+          "$oid": "68f110000000000000000094"
+        },
+        "sku": "CMH32GX5M2B6000C40",
+        "name": "32GB (2x16GB)",
+        "price": 3200000,
+        "stock": 15,
+        "attributes": [
+          {
+            "key": "Dung lượng",
+            "value": "32GB"
+          }
+        ]
+      }
+    ],
+    "brand": "Corsair",
+    "images": [
+      "https://bizweb.dktcdn.net/thumb/1024x1024/100/329/122/products/vengeance-rgb-pro-cmw16gx4m2c3600c18-02-631f98d6-9a6c-4066-9b09-294a871e6bc5.jpg?v=1539334156067",
+      "https://nguyencongpc.vn/media/product/23471-corsair-vengeance-rgb-32gb-2x16gb-ddr5-6000mhz-black-1.jpg",
+      "https://cdn.nguyenkimmall.com/images/thumbnails/600/600/detailed/880/10055008-ram-pc-corsair-vengeance-rgb-32gb-6000mhz-ddr5-1.jpg"
+    ],
+    "rating": 5,
+    "numReviews": 3,
+    "numComments": 2,
+    "createdAt": {
+      "$date": "2026-03-29T20:15:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-03-29T20:15:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "68f100000000000000000095"
+    },
+    "name": "RAM Kingston FURY Beast 16GB DDR4 3200MHz",
+    "slug": "kingston-fury-beast-16gb-ddr4",
+    "description": "Thanh RAM quốc dân tản nhiệt nhôm đen nguyên khối cực ngầu. Nâng cấp đơn giản nhưng hiệu quả thấy rõ khi làm việc với các phần mềm nặng.",
+    "category": {
+      "$oid": "6901d157c092af8bb7fc07a5"
+    },
+    "price": 950000,
+    "variants": [
+      {
+        "_id": {
+          "$oid": "68f110000000000000000095"
+        },
+        "sku": "KF432C16BB1/16",
+        "name": "16GB",
+        "price": 950000,
+        "stock": 40,
+        "attributes": [
+          {
+            "key": "Dung lượng",
+            "value": "16GB"
+          }
+        ]
+      }
+    ],
+    "brand": "Kingston",
+    "images": [
+      "https://anphat.com.vn/media/product/36952_ktc_product_memory_beast_ddr4_single_1_lg.jpg",
+      "https://cdn.tgdd.vn/Products/Images/8694/281358/ram-desktop-kingston-fury-beast-16gb-ddr4-3200mhz-thumb-600x600.jpg",
+      "https://memoryzone.com.vn/storage/san-pham/ram-pc/kingston/fury-beast-ddr4/ram-pc-kingston-fury-beast-16gb-3200mhz-ddr4-kf432c16bb1-16.jpg"
+    ],
+    "rating": 4,
+    "numReviews": 10,
+    "numComments": 5,
+    "createdAt": {
+      "$date": "2026-03-29T20:20:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-03-29T20:20:00.000Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "68f100000000000000000096"
+    },
+    "name": "RAM G.Skill Trident Z5 RGB 64GB (2x32GB) DDR5 6400MHz",
+    "slug": "gskill-trident-z5-64gb-ddr5",
+    "description": "Quái vật dung lượng cho dân chuyên nghiệp. 64GB RAM sẵn sàng cân mọi máy ảo, render video 4K hay những project đồ họa cực nặng mà không sụt giảm hiệu năng.",
+    "category": {
+      "$oid": "6901d157c092af8bb7fc07a5"
+    },
+    "price": 6590000,
+    "variants": [
+      {
+        "_id": {
+          "$oid": "68f110000000000000000096"
+        },
+        "sku": "F5-6400J3239G32GX2-TZ5RK",
+        "name": "64GB (2x32GB)",
+        "price": 6590000,
+        "stock": 5,
+        "attributes": [
+          {
+            "key": "Dung lượng",
+            "value": "64GB"
+          }
+        ]
+      }
+    ],
+    "brand": "G.Skill",
+    "images": [
+      "https://www.gskill.com/_upload/images/164179884600.png",
+      "https://nguyencongpc.vn/media/product/23307-ram-gskill-trident-z5-rgb-32gb-2x16gb-ddr5-6000mhz-black-1.jpg",
+      "https://hacom.vn/media/product/64819_ram_desktop_g_skill_trident_z5_rgb_f5_6000j3636f16gx2_tz5rk_32gb_2x16gb_ddr5_6000mhz.jpg"
+    ],
+    "rating": 5,
+    "numReviews": 1,
+    "numComments": 0,
+    "createdAt": {
+      "$date": "2026-03-29T20:25:00.000Z"
+    },
+    "updatedAt": {
+      "$date": "2026-03-29T20:25:00.000Z"
+    }
+  }
+]

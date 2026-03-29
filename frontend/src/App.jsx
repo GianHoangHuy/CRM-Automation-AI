@@ -5,6 +5,7 @@ import { ToastContainer } from "react-toastify";
 import Header from "./components/common/Header";
 import Footer from "./components/common/Footer";
 import PrivateRoute from "./components/common/PrivateRoute";
+import Chatbot from './components/common/Chatbot';
 
 // Pages - Public
 import LandingPage from "./pages/LandingPage";
@@ -93,9 +94,9 @@ function App() {
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </main>
-
       {/* Footer luôn hiển thị */}
       <Footer />
+      <Chatbot />
     </div>
   );
 }
