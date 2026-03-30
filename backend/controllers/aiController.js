@@ -5,11 +5,12 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 exports.chatWithAI = async (req, res) => {
     try {
         const { message, history } = req.body;
-        const systemPrompt = `Bạn là nhân viên bán hàng điện tử. 
-        Luật 1: Nếu khách hỏi chung chung, hãy hỏi lại để làm rõ nhu cầu.
-        Luật 2: Nếu khách đã cung cấp thông tin, trả về JSON. Cấu trúc chuẩn: {"isReady": true, "keywords": ["HP", "16GB"], "targetPrice": 25000000}.
-        Luật 3: Trường "targetPrice" là TÙY CHỌN. Nếu khách nói mức giá (vd: "20 triệu", "tầm 15 củ"), hãy đổi thành số nguyên (20000000, 15000000). Nếu khách không nhắc đến giá, tuyệt đối KHÔNG đưa trường targetPrice vào JSON.
-        Luật 4: Nếu khách hỏi sản phẩm bán chạy nhất, best seller, trả về: {"isReady": true, "keywords": ["BEST_SELLER"]}. Tuyệt đối không nói thêm gì ngoài JSON.`;
+        const systemPrompt = `Bạn là nhân viên bán hàng điện tử. Dưới đây là các quy tắc BẮT BUỘC để phân tích câu nói của khách hàng:
+        Luật 1 (Giao tiếp): Nếu khách chỉ chào hỏi hoặc hỏi chung chung chưa rõ nhu cầu, hãy trả lời bằng văn bản ngắn gọn, thân thiện để hỏi thêm (hãng, RAM, tầm giá...).
+        Luật 2 (Tìm kiếm thông thường): Nếu khách yêu cầu TÌM KIẾM hoặc TƯ VẤN (vd: "tìm laptop HP 16gb", "tư vấn máy 20 triệu"), trả về JSON: {"isReady": true, "keywords": ["từ khóa 1", "từ khóa 2"], "targetPrice": 20000000}. (Trường targetPrice có thể bỏ trống nếu khách không nói giá).
+        Luật 3 (Hàng bán chạy): Nếu khách hỏi sản phẩm bán chạy nhất, hot nhất, best seller, trả về JSON: {"isReady": true, "keywords": ["BEST_SELLER"]}.
+        Luật 4 (Đưa vào giỏ hàng): ĐẶC BIỆT CHÚ Ý, nếu khách yêu cầu "THÊM VÀO GIỎ HÀNG", "MUA SẢN PHẨM NÀY", "LẤY CHO TÔI CON..." -> Bắt buộc trả về JSON theo form: {"action": "ADD_TO_CART", "productName": "Tên sản phẩm khách muốn", "targetPrice": 15000000}. (Nếu khách nói tên sản phẩm thì điền productName, nếu khách nói giá thì điền targetPrice).
+        Luật 5 (Định dạng): Nếu rơi vào Luật 2, 3 hoặc 4, bạn TUYỆT ĐỐI CHỈ TRẢ VỀ ĐÚNG 1 CHUỖI JSON, cấm tuyệt đối không được nói thêm bất kỳ từ ngữ nào khác ở ngoài chuỗi JSON.`;
 
         const prompt = `${systemPrompt}\n\nLịch sử đoạn chat trước đó:\n${history}\n\nKhách hàng vừa nói thêm: "${message}"`;
         const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
@@ -19,20 +20,46 @@ exports.chatWithAI = async (req, res) => {
         try {
             const cleanJson = aiResponse.replace(/```json/g, "").replace(/```/g, "").trim();
             const aiData = JSON.parse(cleanJson);
+            if (aiData.action === "ADD_TO_CART") {
+                let productToAdd = null;
+                if (aiData.productName) {
+                    productToAdd = await Product.findOne({ name: new RegExp(aiData.productName, 'i') });
+                } 
+                else if (aiData.targetPrice) {
+                    const target = Number(aiData.targetPrice);
+                    const products = await Product.find({
+                        price: { $gte: target - 6000000, $lte: target + 6000000 }
+                    });
+                    
+                    if (products.length > 0) {
+                        productToAdd = products.reduce((prev, curr) => 
+                            Math.abs(curr.price - target) < Math.abs(prev.price - target) ? curr : prev
+                        );
+                    }
+                }
 
-            // Đổi điều kiện if chỉ cần isReady là được chạy
+                if (productToAdd) {
+                    return res.status(200).json({
+                        type: "cart_success",
+                        message: `Dạ, em đã giúp bạn tự động thêm sản phẩm **${productToAdd.name}** vào giỏ hàng rồi ạ! Bạn có thể kiểm tra giỏ hàng nhé.`,
+                        product: productToAdd
+                    });
+                } else {
+                    return res.status(200).json({
+                        type: "text",
+                        message: "Dạ em tìm mỏi mắt mà chưa thấy sản phẩm nào khớp chính xác để thêm vào giỏ hàng. Bạn cho em xin lại tên cụ thể hơn nha!"
+                    });
+                }
+            }
+
             if (aiData.isReady) {
                 let products = [];
+                let query = {}; 
 
-                // Kịch bản 1: Tìm hàng bán chạy
                 if (aiData.keywords && aiData.keywords.includes("BEST_SELLER")) {
                      products = await Product.find({}).limit(3); 
                 } 
-                // Kịch bản 2: Tìm theo từ khóa và giá tiền
                 else {
-                    let query = {}; // Tạo một bộ lọc rỗng
-
-                    // 1. Thêm bộ lọc từ khóa (nếu AI nhặt được từ khóa)
                     if (aiData.keywords && aiData.keywords.length > 0) {
                         const searchQueries = aiData.keywords.map(kw => new RegExp(kw, 'i'));
                         query.$or = [
@@ -40,17 +67,13 @@ exports.chatWithAI = async (req, res) => {
                             { description: { $in: searchQueries } }
                         ];
                     }
-
-                    // 2. Thêm bộ lọc khoảng giá +- 5 triệu (nếu AI bắt được số tiền)
                     if (aiData.targetPrice) {
                         const target = Number(aiData.targetPrice);
                         query.price = {
-                            $gte: target - 5000000, // Lớn hơn hoặc bằng giá mục tiêu - 5 triệu
-                            $lte: target + 5000000  // Nhỏ hơn hoặc bằng giá mục tiêu + 5 triệu
+                            $gte: target - 5000000, 
+                            $lte: target + 5000000  
                         };
                     }
-
-                    // Chọc vào Database bằng bộ lọc tổng hợp ở trên
                     products = await Product.find(query).limit(3); 
                 } 
 
@@ -58,7 +81,7 @@ exports.chatWithAI = async (req, res) => {
                     type: "form",
                     message: products.length > 0 
                         ? "Dạ, hệ thống tìm thấy một số mẫu này cực kỳ phù hợp với yêu cầu của bạn ạ:"
-                        : "Dạ hiện tại trong tầm giá này hệ thống chưa tìm thấy mẫu khớp chính xác. Bạn tham khảo mức giá khác hoặc mẫu khác nhé!",
+                        : "Dạ hiện tại trong tầm giá này hệ thống chưa tìm thấy mẫu khớp chính xác. Bạn tham khảo mức giá khác nhé!",
                     products: products 
                 });
             }

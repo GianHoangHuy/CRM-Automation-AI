@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { OrderAPI } from '../../services/api'; 
+import { toast } from 'react-toastify';
 
 const Chatbot = () => {
     const [input, setInput] = useState('');
@@ -26,6 +28,29 @@ const Chatbot = () => {
                 history: chatHistory 
             });
             const data = response.data;
+
+            if (data.type === 'cart_success' && data.product) {
+                try {
+                    const defaultVariant = (data.product.variants && data.product.variants.length > 0) 
+                        ? data.product.variants[0]._id 
+                        : null;
+
+                    if (!defaultVariant) {
+                        toast.error("Sản phẩm này chưa có phân loại, không thể tự động thêm!");
+                    } else {
+                        await OrderAPI.addToCart({
+                            productId: data.product._id,
+                            variantId: defaultVariant,
+                            quantity: 1
+                        });
+
+                        toast.success(`🛒 Đã tự động thêm [${data.product.name}] vào giỏ hàng!`);
+                    }
+                } catch (error) {
+                    toast.error("Lỗi khi thêm vào giỏ hàng qua AI!");
+                    console.log("Lỗi Add To Cart AI:", error);
+                }
+            }
 
             setMessages(prev => [...prev, {
                 sender: 'ai',
@@ -91,7 +116,10 @@ const Chatbot = () => {
                                                     <p style={{ fontSize: '13px', color: '#e74c3c', fontWeight: 'bold', margin: '5px 0' }}>
                                                         {product.price.toLocaleString('vi-VN')}đ
                                                     </p>
-                                                    <button style={{ background: '#27ae60', color: '#fff', border: 'none', padding: '5px', borderRadius: '5px', cursor: 'pointer', width: '100%', fontSize: '12px' }}>
+                                                    <button 
+                                                        onClick={() => window.location.href = `/product/${product.slug}`}
+                                                        style={{ background: '#27ae60', color: '#fff', border: 'none', padding: '5px', borderRadius: '5px', cursor: 'pointer', width: '100%', fontSize: '12px' }}
+                                                    >
                                                         Xem chi tiết
                                                     </button>
                                                 </div>
