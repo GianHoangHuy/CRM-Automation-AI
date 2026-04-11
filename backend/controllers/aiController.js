@@ -5,21 +5,78 @@ const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 exports.chatWithAI = async (req, res) => {
     try {
         const { message, history } = req.body;
-        const systemPrompt = `Bạn là nhân viên bán hàng điện tử. Dưới đây là các quy tắc BẮT BUỘC để phân tích câu nói của khách hàng:
-        Luật 1 (Giao tiếp): Nếu khách chỉ chào hỏi hoặc hỏi chung chung chưa rõ nhu cầu, hãy trả lời bằng văn bản ngắn gọn, thân thiện để hỏi thêm (hãng, RAM, tầm giá...).
-        Luật 2 (Tìm kiếm thông thường): Nếu khách yêu cầu TÌM KIẾM hoặc TƯ VẤN (vd: "tìm laptop HP 16gb", "tư vấn máy 20 triệu"), trả về JSON: {"isReady": true, "keywords": ["từ khóa 1", "từ khóa 2"], "targetPrice": 20000000}. (Trường targetPrice có thể bỏ trống nếu khách không nói giá).
-        Luật 3 (Hàng bán chạy): Nếu khách hỏi sản phẩm bán chạy nhất, hot nhất, best seller, trả về JSON: {"isReady": true, "keywords": ["BEST_SELLER"]}.
-        Luật 4 (Đưa vào giỏ hàng): ĐẶC BIỆT CHÚ Ý, nếu khách yêu cầu "THÊM VÀO GIỎ HÀNG", "MUA SẢN PHẨM NÀY", "LẤY CHO TÔI CON..." -> Bắt buộc trả về JSON theo form: {"action": "ADD_TO_CART", "productName": "Tên sản phẩm khách muốn", "targetPrice": 15000000}. (Nếu khách nói tên sản phẩm thì điền productName, nếu khách nói giá thì điền targetPrice).
-        Luật 5 (Định dạng): Nếu rơi vào Luật 2, 3 hoặc 4, bạn TUYỆT ĐỐI CHỈ TRẢ VỀ ĐÚNG 1 CHUỖI JSON, cấm tuyệt đối không được nói thêm bất kỳ từ ngữ nào khác ở ngoài chuỗi JSON.`;
+        const systemPrompt = `Bạn là nhân viên bán hàng điện tử. Dưới đây là các quy tắc BẮT BUỘC để phân tích câu hỏi. MỌI CÂU TRẢ LỜI PHẢI NẰM TRONG CẤU TRÚC JSON, KHÔNG NÓI THÊM BẤT KỲ CHỮ NÀO BÊN NGOÀI.
+
+        Luật 1 (Giao tiếp & Đồng ý): Khách chào hỏi, nói chuyện phiếm, hoặc xác nhận (vd: "đúng thế", "ok", "ừ") -> Trả về JSON: {"action": "CHAT", "message": "Câu phản hồi thân thiện của bạn"}.
+        Luật 2 (Tìm kiếm): Khách tìm sản phẩm -> BẮT BUỘC trả về JSON: {"isReady": true, "keywords": ["từ khóa"]}.
+        - CHÚ Ý 1: Lọc BỎ NGAY LẬP TỨC các từ thừa như "laptop", "máy tính", "tìm", "cho mình". CHỈ GIỮ LẠI ĐÚNG tên thương hiệu (vd: "HP", "Dell", "Macbook") hoặc dòng máy.
+        - CHÚ Ý 2: NẾU khách CÓ nhắc đến giá tiền (vd: 20 triệu) thì mới thêm trường "targetPrice": 20000000. NẾU KHÔNG CÓ GIÁ TIỀN, TUYỆT ĐỐI KHÔNG ĐƯA "targetPrice" VÀO JSON.
+        Luật 3 (Bán chạy): Khách hỏi best seller -> JSON: {"isReady": true, "keywords": ["BEST_SELLER"]}.
+        Luật 4 (Thêm giỏ): "Mua số 2" -> {"action": "ADD_BY_INDEX", "index": 2}. "Lấy Victus" -> {"action": "ADD_TO_CART", "productName": "Victus"}.
+        Luật 5 (Thanh toán): "Tính tiền" -> {"action": "CHECKOUT"}.
+        Luật 6 (Chi tiết): "Xem số 3" -> {"action": "VIEW_DETAIL", "index": 3}.
+        Luật 7 (Giao diện): "Thu gọn" -> {"action": "COLLAPSE_LIST"}. "Mở bảng" -> {"action": "EXPAND_LIST"}.
+        Luật 8 (Tóm tắt - RẤT QUAN TRỌNG): Khi khách yêu cầu tóm tắt (vd: "tóm tắt lại", "nãy giờ hỏi gì"), BẠN PHẢI ĐỌC [LỊCH SỬ CHAT] VÀ TUYỆT ĐỐI CHỈ TRẢ VỀ ĐỊNH DẠNG JSON NÀY, KHÔNG NÓI THÊM BẤT KỲ CHỮ NÀO BÊN NGOÀI: 
+        {"action": "SUMMARIZE", "message": "Dạ, nãy giờ bạn đã nhờ em tìm laptop HP và thêm sản phẩm số 3 vào giỏ hàng ạ..."}`;
+
+        // ÉP AI ĐỌC LỊCH SỬ CHAT BẰNG CÁCH NỐI CHUỖI NÀY
+        const fullPrompt = `
+        ${systemPrompt}
+        
+        [LỊCH SỬ CHAT TỪ TRƯỚC ĐẾN NAY]:
+        ${req.body.history}
+
+        [CÂU NÓI HIỆN TẠI CỦA KHÁCH]:
+        ${req.body.message}
+        `;
 
         const prompt = `${systemPrompt}\n\nLịch sử đoạn chat trước đó:\n${history}\n\nKhách hàng vừa nói thêm: "${message}"`;
         const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" });
         const result = await model.generateContent(`${systemPrompt}\n\nKhách hàng: "${message}"`);
         const aiResponse = result.response.text();
 
-        try {
+       try {
             const cleanJson = aiResponse.replace(/```json/g, "").replace(/```/g, "").trim();
             const aiData = JSON.parse(cleanJson);
+
+            // 1. NHÓM GIAO TIẾP & TÓM TẮT
+            if (aiData.action === "CHAT" || aiData.action === "SUMMARIZE") {
+                return res.status(200).json({ 
+                    type: "text", 
+                    message: aiData.message 
+                });
+            }
+
+            // 2. NHÓM GIAO DIỆN
+            if (aiData.action === "COLLAPSE_LIST") {
+                return res.status(200).json({ type: "collapse_list" });
+            }
+            if (aiData.action === "EXPAND_LIST") {
+                return res.status(200).json({ type: "expand_list" });
+            }
+            if (aiData.action === "CLOSE_LIST") {
+                return res.status(200).json({ type: "close_list" });
+            }
+            if (aiData.action === "VIEW_DETAIL") { // <-- BỔ SUNG LUẬT 6 BỊ THIẾU
+                return res.status(200).json({ 
+                    type: "view_detail", 
+                    index: aiData.index 
+                });
+            }
+
+            // 3. NHÓM CHỐT ĐƠN & THANH TOÁN
+            if (aiData.action === "ADD_BY_INDEX") {
+                return res.status(200).json({
+                    type: "add_by_index",
+                    index: aiData.index
+                });
+            }
+            if (aiData.action === "CHECKOUT") {
+                return res.status(200).json({
+                    type: "checkout",
+                    message: "Dạ vâng, em đang đưa bạn đến trang Giỏ hàng để thanh toán ngay đây ạ!"
+                });
+            }
             if (aiData.action === "ADD_TO_CART") {
                 let productToAdd = null;
                 if (aiData.productName) {
@@ -52,12 +109,13 @@ exports.chatWithAI = async (req, res) => {
                 }
             }
 
+            // 4. NHÓM TÌM KIẾM (isReady)
             if (aiData.isReady) {
                 let products = [];
                 let query = {}; 
 
                 if (aiData.keywords && aiData.keywords.includes("BEST_SELLER")) {
-                     products = await Product.find({}).limit(3); 
+                     products = await Product.find({}).limit(5);
                 } 
                 else {
                     if (aiData.keywords && aiData.keywords.length > 0) {
@@ -74,22 +132,32 @@ exports.chatWithAI = async (req, res) => {
                             $lte: target + 5000000  
                         };
                     }
-                    products = await Product.find(query).limit(3); 
+                    products = await Product.find(query).limit(5);
                 } 
 
                 return res.status(200).json({
                     type: "form",
                     message: products.length > 0 
-                        ? "Dạ, hệ thống tìm thấy một số mẫu này cực kỳ phù hợp với yêu cầu của bạn ạ:"
+                        ? "Dạ, em tìm được các mẫu này, bạn xem bảng bên trái nhé. Bạn muốn mua mẫu số mấy ạ?"
                         : "Dạ hiện tại trong tầm giá này hệ thống chưa tìm thấy mẫu khớp chính xác. Bạn tham khảo mức giá khác nhé!",
                     products: products 
                 });
             }
-        } catch (err) {
+
+            // ==========================================
+            // 5. LƯỚI AN TOÀN (NẾU AI TRẢ JSON LẠ HOẮC)
+            // ==========================================
             return res.status(200).json({
                 type: "text",
-                message: aiResponse,
-                products: []
+                message: "Dạ em hiểu ý bạn nhưng hệ thống chưa kịp xử lý lệnh này. Bạn có thể nói rõ hơn giúp em không ạ?"
+            });
+
+        } catch (error) {
+            console.error("Lỗi AI không trả về chuẩn JSON:", error);
+            // TRƯỜNG HỢP AI TRẢ VỀ TEXT BÌNH THƯỜNG (KHÔNG PHẢI JSON)
+            return res.status(500).json({ 
+                type: "text", 
+                message: "Dạ em bị lú một chút, bạn nói lại giúp em nhé!" 
             });
         }
     } catch (error) {
