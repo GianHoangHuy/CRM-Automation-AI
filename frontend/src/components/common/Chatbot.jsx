@@ -2,8 +2,10 @@ import React, { useState, useEffect, Fragment } from 'react';
 import axios from 'axios';
 import { OrderAPI } from '../../services/api';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 const Chatbot = () => {
+    const navigate = useNavigate();
     // 1. KIỂM TRA ĐĂNG NHẬP TỪ SESSION (Tắt trình duyệt là mất đăng nhập)
     const token = sessionStorage.getItem('token'); // Đổi tên 'token' cho khớp với web bạn nhé
     const isLoggedIn = !!token;
@@ -88,7 +90,11 @@ const Chatbot = () => {
 
         try {
             const chatHistory = messages.map(msg => `${msg.sender === 'user' ? 'Khách hàng' : 'AI'}: ${msg.text}`).join('\n');
-            const response = await axios.post('http://localhost:5000/api/chat', { message: input, history: chatHistory });
+            const response = await axios.post('http://localhost:5000/api/chat', { 
+                message: input, 
+                history: chatHistory,
+                currentPath: window.location.pathname
+            });
             const data = response.data;
             let finalAiMessage = data.message;
 
@@ -114,9 +120,20 @@ const Chatbot = () => {
             if (data.type === 'view_detail') {
                 const pIndex = data.index - 1;
                 const targetP = suggestedProducts[pIndex];
+                
                 if (targetP) {
                     finalAiMessage = `Dạ, em đang mở trang chi tiết sản phẩm số ${data.index}...`;
-                    setTimeout(() => { window.location.href = `/product/${targetP.slug}`; }, 1000);
+                    
+                    // Ưu tiên dùng slug, nếu database không có slug thì tự động rớt về _id
+                    const productPath = targetP.slug ? `/product/${targetP.slug}` : `/product/${targetP._id}`;
+                    
+                    // Dùng navigate để chuyển trang mượt mà không reload web
+                    setTimeout(() => { 
+                        navigate(productPath); 
+                    }, 1000);
+                } else {
+                    // Nếu khách chọn số không có thật trong bảng
+                    finalAiMessage = `Dạ em tìm không thấy sản phẩm số ${data.index} trong danh sách hiện tại. Bạn xem lại số trên bảng giúp em nhé!`;
                 }
             }
 
