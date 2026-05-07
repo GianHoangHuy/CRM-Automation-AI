@@ -275,3 +275,257 @@ const Chatbot = () => {
 };
 
 export default Chatbot;
+
+
+// import React, { useState, useEffect, Fragment, useRef } from 'react';
+// import axios from 'axios';
+// import { OrderAPI } from '../../services/api';
+// import { toast } from 'react-toastify';
+// import { useNavigate } from 'react-router-dom';
+
+// const Chatbot = () => {
+//     const navigate = useNavigate();
+//     const scrollRef = useRef(null);
+
+//     // 1. QUẢN LÝ THÔNG TIN ĐĂNG NHẬP
+//     const [currentUser, setCurrentUser] = useState(() => JSON.parse(sessionStorage.getItem('user') || '{}'));
+//     const isLoggedIn = !!sessionStorage.getItem('token');
+//     const userId = currentUser._id || currentUser.id || 'guest';
+//     const userRole = currentUser.role || 'user';
+
+//     // Chìa khóa lưu trữ
+//     const chatKey = `chatMessages_${userId}`;
+//     const productKey = `chatProducts_${userId}`;
+//     const openKey = `chatIsOpen_${userId}`;
+//     const collapseKey = `chatListCollapsed_${userId}`;
+
+//     // 2. KHỞI TẠO STATE
+//     const [messages, setMessages] = useState(() => {
+//         const storage = isLoggedIn ? localStorage : sessionStorage;
+//         const saved = storage.getItem(chatKey);
+//         return saved ? JSON.parse(saved) : [{ 
+//             sender: 'ai', 
+//             type: 'text', 
+//             text: `Xin chào ${userRole === 'admin' ? 'Quản trị viên' : ''}! Tôi có thể giúp gì cho bạn?` 
+//         }];
+//     });
+    
+//     const [suggestedProducts, setSuggestedProducts] = useState(() => {
+//         const storage = isLoggedIn ? localStorage : sessionStorage;
+//         const saved = storage.getItem(productKey);
+//         return saved ? JSON.parse(saved) : [];
+//     });
+
+//     const [isOpen, setIsOpen] = useState(() => {
+//         const storage = isLoggedIn ? localStorage : sessionStorage;
+//         return storage.getItem(openKey) === 'true';
+//     });
+    
+//     const [isListCollapsed, setIsListCollapsed] = useState(() => {
+//         const storage = isLoggedIn ? localStorage : sessionStorage;
+//         return storage.getItem(collapseKey) === 'true';
+//     });
+
+//     const [input, setInput] = useState('');
+//     const [loading, setLoading] = useState(false);
+
+//     // Cập nhật User khi có thay đổi ở Session (Tránh lỗi kẹt role Admin)
+//     useEffect(() => {
+//         const handleStorageChange = () => {
+//             setCurrentUser(JSON.parse(sessionStorage.getItem('user') || '{}'));
+//         };
+//         window.addEventListener('storage', handleStorageChange);
+//         return () => window.removeEventListener('storage', handleStorageChange);
+//     }, []);
+
+//     // Tự động cuộn xuống
+//     useEffect(() => {
+//         if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
+//     }, [messages]);
+
+//     // Lưu trữ dữ liệu
+//     useEffect(() => { 
+//         const storage = isLoggedIn ? localStorage : sessionStorage;
+//         storage.setItem(chatKey, JSON.stringify(messages)); 
+//         storage.setItem(productKey, JSON.stringify(suggestedProducts));
+//         storage.setItem(openKey, isOpen);
+//         storage.setItem(collapseKey, isListCollapsed);
+//     }, [messages, suggestedProducts, isOpen, isListCollapsed, isLoggedIn, chatKey, productKey, openKey, collapseKey]);
+
+//     // 3. HÀM GỬI TIN NHẮN
+//     const sendMessage = async () => {
+//         if (!input.trim() || loading) return;
+    
+//         // 1. Lấy thông tin Role và Path hiện tại
+//         const sessionUser = JSON.parse(sessionStorage.getItem('user') || '{}');
+//         const currentRole = sessionUser.role || 'user';
+//         const currentPath = window.location.pathname;
+    
+//         // 2. Cập nhật giao diện tin nhắn của User ngay lập tức
+//         const userMsg = { sender: 'user', type: 'text', text: input };
+//         const chatHistorySnapshot = messages; // Lưu lại để dùng cho history
+        
+//         setMessages(prev => [...prev, userMsg]);
+//         const currentInput = input; // Lưu lại input để gửi API
+//         setInput('');
+//         setLoading(true);
+    
+//         try {
+//             // 3. Tạo lịch sử hội thoại an toàn (lấy 5 câu gần nhất)
+//             const chatHistory = chatHistorySnapshot && chatHistorySnapshot.length > 0 
+//                 ? chatHistorySnapshot.slice(-5).map(m => `${m.sender === 'user' ? 'Khách' : 'AI'}: ${m.text}`).join('\n')
+//                 : "";
+    
+//             // 4. Gọi API Backend
+//             const response = await axios.post('http://localhost:5000/api/chat', { 
+//                 message: currentInput, 
+//                 history: chatHistory,
+//                 role: currentRole,
+//                 currentPath: currentPath
+//             });
+    
+//             const data = response.data;
+//             if (!data) throw new Error("Server trả về dữ liệu trống");
+    
+//             let aiText = data.message || "";
+    
+//             // 5. Xử lý các Action đặc biệt dựa trên Type từ AI trả về
+//             switch (data.type) {
+//                 case 'admin_chart':
+//                     if (data.data) {
+//                         const revenue = data.data.totalRevenue ? data.data.totalRevenue.toLocaleString() : "0";
+//                         aiText = `${data.message}\n💰 Tổng doanh thu: ${revenue}đ\n📦 Số đơn hàng: ${data.data.orderCount || 0}`;
+//                     }
+//                     break;
+    
+//                 case 'admin_predict':
+//                     aiText = `💡 **Dự báo**: ${data.message}\n🚀 **Gợi ý**: ${data.suggestion || "N/A"}`;
+//                     break;
+    
+//                 case 'form':
+//                     if (data.products) {
+//                         setSuggestedProducts(data.products);
+//                         setIsListCollapsed(false);
+//                     }
+//                     break;
+    
+//                 case 'cart_success':
+//                     if (data.product) {
+//                         const variantId = data.product.variants?.[0]?._id;
+//                         await OrderAPI.addToCart({ productId: data.product._id, variantId, quantity: 1 });
+//                         toast.success(`Đã thêm ${data.product.name} vào giỏ!`);
+//                     }
+//                     break;
+    
+//                 default:
+//                     // Các trường hợp text bình thường không cần xử lý thêm
+//                     break;
+//             }
+    
+//             // 6. Cập nhật tin nhắn của AI vào giao diện
+//             setMessages(prev => [...prev, { sender: 'ai', type: data.type, text: aiText }]);
+    
+//         } catch (error) {
+//             console.error("🚀 Chat Error:", error);
+            
+//             let errorMsg = 'Kết nối máy chủ thất bại!';
+//             if (error.response?.status === 500) {
+//                 errorMsg = 'Lỗi máy chủ (500). Bạn hãy kiểm tra terminal Backend để biết chi tiết lỗi (thường là lỗi Model hoặc Database).';
+//             }
+    
+//             setMessages(prev => [...prev, { sender: 'ai', type: 'text', text: errorMsg }]);
+//         } finally {
+//             setLoading(false);
+//         }
+//     };
+
+//     return (
+//         <Fragment>
+//             {/* BẢNG SẢN PHẨM BÊN TRÁI */}
+//             {isOpen && suggestedProducts.length > 0 && (
+//                 <div style={{ 
+//                     position: 'fixed', top: '80px', bottom: '40px', left: '40px', 
+//                     overflowY: 'auto', background: '#fff', borderRadius: '15px', 
+//                     border: '1px solid #e0e0e0', zIndex: 99998,
+//                     transition: 'all 0.3s ease',
+//                     width: isListCollapsed ? '50px' : '480px',
+//                     padding: isListCollapsed ? '10px 5px' : '20px',
+//                     boxShadow: '0 10px 40px rgba(0,0,0,0.1)' 
+//                 }}>
+//                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '15px' }}>
+//                         {!isListCollapsed && <b style={{fontSize: '16px', color:'#0084ff'}}>📋 Kết quả gợi ý</b>}
+//                         <button onClick={() => setIsListCollapsed(!isListCollapsed)} style={{cursor:'pointer', border:'none', background:'#eee', padding:'2px 8px', borderRadius:'4px'}}>
+//                             {isListCollapsed ? '▶' : '◀'}
+//                         </button>
+//                     </div>
+
+//                     {!isListCollapsed && suggestedProducts.map((p, i) => (
+//                         <div key={p._id} style={{ display: 'flex', gap: '15px', marginBottom: '15px', borderBottom: '1px solid #f5f5f5', paddingBottom: '10px' }}>
+//                             <img src={p.images?.[0]?.url || p.image_url} alt="" style={{width:'50px', height:'50px', objectFit:'contain'}} />
+//                             <div style={{fontSize:'13px'}}>
+//                                 <div style={{fontWeight:'bold'}}>{i+1}. {p.name}</div>
+//                                 <div style={{color:'red'}}>{p.price?.toLocaleString()}đ</div>
+//                             </div>
+//                         </div>
+//                     ))}
+//                 </div>
+//             )}
+
+//             {/* NÚT VÀ CỬA SỔ CHAT BÊN PHẢI */}
+//             <div style={{ position: 'fixed', bottom: '30px', right: '30px', zIndex: 99999 }}>
+//                 {isOpen && (
+//                     <div style={{ 
+//                         width: '350px', height: '500px', background: '#fff', borderRadius: '15px', 
+//                         boxShadow: '0 10px 30px rgba(0,0,0,0.2)', display: 'flex', flexDirection: 'column',
+//                         overflow: 'hidden', border: '1px solid #ddd', marginBottom: '12px'
+//                     }}>
+//                         <div style={{ background: '#0084ff', color: '#fff', padding: '12px 15px', fontWeight: 'bold', display: 'flex', justifyContent: 'space-between' }}>
+//                             <span>🤖 Trợ lý AI {userRole === 'admin' && '(Quản trị)'}</span>
+//                             <button onClick={() => setIsOpen(false)} style={{background:'none', border:'none', color:'#fff', cursor:'pointer'}}>✖</button>
+//                         </div>
+
+//                         <div ref={scrollRef} style={{ flex: 1, padding: '15px', overflowY: 'auto', background: '#fcfcfc' }}>
+//                             {messages.map((msg, index) => (
+//                                 <div key={index} style={{ textAlign: msg.sender === 'user' ? 'right' : 'left', marginBottom: '12px' }}>
+//                                     <div style={{
+//                                         display: 'inline-block', padding: '10px 14px', borderRadius: '15px',
+//                                         background: msg.sender === 'user' ? '#0084ff' : '#eee',
+//                                         color: msg.sender === 'user' ? '#fff' : '#333',
+//                                         fontSize: '13.5px', maxWidth: '85%', whiteSpace: 'pre-line'
+//                                     }}>
+//                                         {msg.text}
+//                                     </div>
+//                                 </div>
+//                             ))}
+//                             {loading && <div style={{fontSize:'11px', color:'#999'}}>Đang xử lý dữ liệu...</div>}
+//                         </div>
+
+//                         <div style={{ padding: '10px', borderTop: '1px solid #eee', display: 'flex', gap: '8px' }}>
+//                             <input 
+//                                 type="text" value={input} 
+//                                 onChange={(e) => setInput(e.target.value)}
+//                                 onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
+//                                 placeholder="Bạn cần hỗ trợ gì?"
+//                                 style={{ flex: 1, padding: '8px 15px', borderRadius: '20px', border: '1px solid #ddd', outline:'none' }}
+//                             />
+//                             <button onClick={sendMessage} style={{ background: '#0084ff', color: '#fff', border: 'none', padding: '0 15px', borderRadius: '20px', cursor: 'pointer' }}>Gửi</button>
+//                         </div>
+//                     </div>
+//                 )}
+                
+//                 <button 
+//                     onClick={() => setIsOpen(!isOpen)}
+//                     style={{ 
+//                         width: '55px', height: '55px', borderRadius: '50%', background: '#0084ff', 
+//                         color: '#fff', border: 'none', cursor: 'pointer', fontSize: '22px',
+//                         boxShadow: '0 5px 15px rgba(0,132,255,0.3)'
+//                     }}
+//                 >
+//                     {isOpen ? '✖' : '💬'}
+//                 </button>
+//             </div>
+//         </Fragment>
+//     );
+// };
+
+// export default Chatbot;

@@ -65,3 +65,16 @@ Nếu muốn xóa sạch dữ liệu và môi trường để chấm lại từ 
 docker-compose down -v
 docker-compose up -d --build
 ```
+
+AI: 
+    Thanh toán
+    Biểu mẫu sản phẩm
+    Admin
+    Chỉnh lại promt
+    Section
+
+Viết lại flow cho hệ thống
+Quy trình Tự động hoá quy trình bán hàng
+Ghi nhận điểm thưởng, phân loại khách hàng
+
+UC, Sequence, DB, 

@@ -1,1149 +1,1048 @@
 [{
-  "_id": {
-    "$oid": "68f100000000000000000011"
-  },
-  "name": "MacBook Pro 14 inch M3 Pro",
-  "slug": "macbook-pro-14-m3pro",
-  "description": "Laptop Apple với chip M3 Pro, màn hình Liquid Retina XDR và thời lượng pin 18 giờ. Hiệu năng vượt trội cho các tác vụ chuyên nghiệp như dựng phim, thiết kế đồ họa.",
-  "category": {
-    "$oid": "68d9582f475f99782d11ddc1"
-  },
-  "price": 48990000,
-  "variants": [
-    {
-      "_id": {
-        "$oid": "68f110000000000000000021"
-      },
-      "sku": "MBP14M3P-18GB-512GB",
-      "name": "18GB/512GB",
-      "price": 48990000,
-      "stock": 7,
-      "attributes": [
-        {
-          "key": "Màu",
-          "value": "Đen Không Gian"
+        "_id": {
+            "$oid": "68f100000000000000000011"
+        },
+        "name": "MacBook Pro 14 inch M3 Pro",
+        "slug": "macbook-pro-14-m3pro",
+        "description": "Laptop Apple với chip M3 Pro, màn hình Liquid Retina XDR và thời lượng pin 18 giờ. Hiệu năng vượt trội cho các tác vụ chuyên nghiệp như dựng phim, thiết kế đồ họa.",
+        "category": {
+            "$oid": "68d9582f475f99782d11ddc1"
+        },
+        "price": 48990000,
+        "variants": [{
+                "_id": {
+                    "$oid": "68f110000000000000000021"
+                },
+                "sku": "MBP14M3P-18GB-512GB",
+                "name": "18GB/512GB",
+                "price": 48990000,
+                "stock": 7,
+                "attributes": [{
+                    "key": "Màu",
+                    "value": "Đen Không Gian"
+                }]
+            },
+            {
+                "_id": {
+                    "$oid": "68f110000000000000000022"
+                },
+                "sku": "MBP14M3P-36GB-1TB",
+                "name": "36GB/1TB",
+                "price": 59990000,
+                "stock": 5,
+                "attributes": [{
+                    "key": "Màu",
+                    "value": "Bạc"
+                }]
+            }
+        ],
+        "brand": "Apple",
+        "images": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeXGAiURzGmsVF4xQXYLcF-6FNshhYT8_6OA&s",
+            "https://cdn2.fptshop.com.vn/unsafe/564x0/filters:quality(80)/Uploads/images/2015/Tin-Tuc/02/24/Macbook-pro-14-2023-m3-pro-11-cpu-14gpu-a.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1RgJoGBQQ0prrYDq3A6Gk4DdmqCaafAD1bw&s"
+        ],
+        "rating": 0,
+        "numReviews": 0,
+        "numComments": 0,
+        "createdAt": {
+            "$date": "2025-10-29T08:00:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-29T08:00:00.000Z"
         }
-      ]
     },
     {
-      "_id": {
-        "$oid": "68f110000000000000000022"
-      },
-      "sku": "MBP14M3P-36GB-1TB",
-      "name": "36GB/1TB",
-      "price": 59990000,
-      "stock": 5,
-      "attributes": [
-        {
-          "key": "Màu",
-          "value": "Bạc"
+        "_id": {
+            "$oid": "68f100000000000000000012"
+        },
+        "name": "Dell XPS 15 9530",
+        "slug": "dell-xps-15-9530",
+        "description": "Laptop doanh nhân cao cấp với màn hình OLED 3.5K, chip Intel i7 Gen 13 và card đồ họa rời RTX 4060. Thiết kế nhôm nguyên khối sang trọng.",
+        "category": {
+            "$oid": "68d9582f475f99782d11ddc1"
+        },
+        "price": 46990000,
+        "variants": [{
+                "_id": {
+                    "$oid": "68f110000000000000000023"
+                },
+                "sku": "XPS15-16GB-512GB",
+                "name": "16GB/512GB",
+                "price": 46990000,
+                "stock": 9,
+                "attributes": [{
+                    "key": "Màu",
+                    "value": "Bạc Platinum"
+                }]
+            },
+            {
+                "_id": {
+                    "$oid": "68f110000000000000000024"
+                },
+                "sku": "XPS15-32GB-1TB",
+                "name": "32GB/1TB",
+                "price": 54990000,
+                "stock": 5,
+                "attributes": [{
+                    "key": "Màu",
+                    "value": "Bạc Platinum"
+                }]
+            }
+        ],
+        "brand": "Dell",
+        "images": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl8lxbpavWbX5BW_Mi6x8wTbQIBHRmWZ6FBQ&s",
+            "https://cdn.tgdd.vn/Files/2023/03/01/1514230/dell-xps-15-9530-core-i9-13900h-3-020323-001144-800-resize.jpg",
+            "https://onlylap.vn/wp-content/uploads/2024/12/dell-xps-9530-2.webp"
+        ],
+        "rating": 0,
+        "numReviews": 0,
+        "numComments": 0,
+        "createdAt": {
+            "$date": "2025-10-29T08:05:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-29T08:05:00.000Z"
         }
-      ]
-    }
-  ],
-  "brand": "Apple",
-  "images": [
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTeXGAiURzGmsVF4xQXYLcF-6FNshhYT8_6OA&s",
-    "https://cdn2.fptshop.com.vn/unsafe/564x0/filters:quality(80)/Uploads/images/2015/Tin-Tuc/02/24/Macbook-pro-14-2023-m3-pro-11-cpu-14gpu-a.jpg",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1RgJoGBQQ0prrYDq3A6Gk4DdmqCaafAD1bw&s"
-  ],
-  "rating": 0,
-  "numReviews": 0,
-  "numComments": 0,
-  "createdAt": {
-    "$date": "2025-10-29T08:00:00.000Z"
-  },
-  "updatedAt": {
-    "$date": "2025-10-29T08:00:00.000Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68f100000000000000000012"
-  },
-  "name": "Dell XPS 15 9530",
-  "slug": "dell-xps-15-9530",
-  "description": "Laptop doanh nhân cao cấp với màn hình OLED 3.5K, chip Intel i7 Gen 13 và card đồ họa rời RTX 4060. Thiết kế nhôm nguyên khối sang trọng.",
-  "category": {
-    "$oid": "68d9582f475f99782d11ddc1"
-  },
-  "price": 46990000,
-  "variants": [
-    {
-      "_id": {
-        "$oid": "68f110000000000000000023"
-      },
-      "sku": "XPS15-16GB-512GB",
-      "name": "16GB/512GB",
-      "price": 46990000,
-      "stock": 9,
-      "attributes": [
-        {
-          "key": "Màu",
-          "value": "Bạc Platinum"
-        }
-      ]
     },
     {
-      "_id": {
-        "$oid": "68f110000000000000000024"
-      },
-      "sku": "XPS15-32GB-1TB",
-      "name": "32GB/1TB",
-      "price": 54990000,
-      "stock": 5,
-      "attributes": [
-        {
-          "key": "Màu",
-          "value": "Bạc Platinum"
+        "_id": {
+            "$oid": "68f100000000000000000013"
+        },
+        "name": "HP Spectre x360 14",
+        "slug": "hp-spectre-x360-14",
+        "description": "Laptop 2-in-1 xoay gập 360 độ, màn hình cảm ứng OLED 2.8K sắc nét, kèm bút cảm ứng tiện lợi cho sáng tạo.",
+        "category": {
+            "$oid": "68d9582f475f99782d11ddc1"
+        },
+        "price": 38990000,
+        "variants": [{
+            "_id": {
+                "$oid": "68f110000000000000000025"
+            },
+            "sku": "SPX360-16GB-512GB",
+            "name": "16GB/512GB",
+            "price": 38990000,
+            "stock": 10,
+            "attributes": [{
+                "key": "Màu",
+                "value": "Xanh Nocturne"
+            }]
+        }],
+        "brand": "HP",
+        "images": [
+            "https://onlylap.vn/wp-content/uploads/2024/01/HP-Spectre-x360-14-ea0023dx-2.webp",
+            "https://thegioiso365.vn/wp-content/uploads/2024/08/HP-Spectre-x360-14-EU0013DX-3.jpg",
+            "https://synnexfpt.com/wp-content/uploads/2021/11/c08227814-scaled.webp"
+        ],
+        "rating": 0,
+        "numReviews": 0,
+        "numComments": 0,
+        "createdAt": {
+            "$date": "2025-10-29T08:10:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-29T08:10:00.000Z"
         }
-      ]
-    }
-  ],
-  "brand": "Dell",
-  "images": [
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQl8lxbpavWbX5BW_Mi6x8wTbQIBHRmWZ6FBQ&s",
-    "https://cdn.tgdd.vn/Files/2023/03/01/1514230/dell-xps-15-9530-core-i9-13900h-3-020323-001144-800-resize.jpg",
-    "https://onlylap.vn/wp-content/uploads/2024/12/dell-xps-9530-2.webp"
-  ],
-  "rating": 0,
-  "numReviews": 0,
-  "numComments": 0,
-  "createdAt": {
-    "$date": "2025-10-29T08:05:00.000Z"
-  },
-  "updatedAt": {
-    "$date": "2025-10-29T08:05:00.000Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68f100000000000000000013"
-  },
-  "name": "HP Spectre x360 14",
-  "slug": "hp-spectre-x360-14",
-  "description": "Laptop 2-in-1 xoay gập 360 độ, màn hình cảm ứng OLED 2.8K sắc nét, kèm bút cảm ứng tiện lợi cho sáng tạo.",
-  "category": {
-    "$oid": "68d9582f475f99782d11ddc1"
-  },
-  "price": 38990000,
-  "variants": [
-    {
-      "_id": {
-        "$oid": "68f110000000000000000025"
-      },
-      "sku": "SPX360-16GB-512GB",
-      "name": "16GB/512GB",
-      "price": 38990000,
-      "stock": 10,
-      "attributes": [
-        {
-          "key": "Màu",
-          "value": "Xanh Nocturne"
-        }
-      ]
-    }
-  ],
-  "brand": "HP",
-  "images": [
-    "https://onlylap.vn/wp-content/uploads/2024/01/HP-Spectre-x360-14-ea0023dx-2.webp",
-    "https://thegioiso365.vn/wp-content/uploads/2024/08/HP-Spectre-x360-14-EU0013DX-3.jpg",
-    "https://synnexfpt.com/wp-content/uploads/2021/11/c08227814-scaled.webp"
-  ],
-  "rating": 0,
-  "numReviews": 0,
-  "numComments": 0,
-  "createdAt": {
-    "$date": "2025-10-29T08:10:00.000Z"
-  },
-  "updatedAt": {
-    "$date": "2025-10-29T08:10:00.000Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68f100000000000000000014"
-  },
-  "name": "MacBook Air M3 13 inch",
-  "slug": "macbook-air-m3-13",
-  "description": "Laptop mỏng nhẹ nhất của Apple với chip M3 mạnh mẽ và thời lượng pin ấn tượng lên đến 18 tiếng.",
-  "category": {
-    "$oid": "68d9582f475f99782d11ddc1"
-  },
-  "price": 27990000,
-  "variants": [
-    {
-      "_id": {
-        "$oid": "68f110000000000000000027"
-      },
-      "sku": "MBA13M3-8GB-256GB",
-      "name": "8GB/256GB",
-      "price": 27990000,
-      "stock": 14,
-      "attributes": [
-        {
-          "key": "Màu",
-          "value": "Vàng ánh kim"
-        }
-      ]
     },
     {
-      "_id": {
-        "$oid": "68f110000000000000000028"
-      },
-      "sku": "MBA13M3-16GB-512GB",
-      "name": "16GB/512GB",
-      "price": 34990000,
-      "stock": 9,
-      "attributes": [
-        {
-          "key": "Màu",
-          "value": "Xám Không Gian"
+        "_id": {
+            "$oid": "68f100000000000000000014"
+        },
+        "name": "MacBook Air M3 13 inch",
+        "slug": "macbook-air-m3-13",
+        "description": "Laptop mỏng nhẹ nhất của Apple với chip M3 mạnh mẽ và thời lượng pin ấn tượng lên đến 18 tiếng.",
+        "category": {
+            "$oid": "68d9582f475f99782d11ddc1"
+        },
+        "price": 27990000,
+        "variants": [{
+                "_id": {
+                    "$oid": "68f110000000000000000027"
+                },
+                "sku": "MBA13M3-8GB-256GB",
+                "name": "8GB/256GB",
+                "price": 27990000,
+                "stock": 14,
+                "attributes": [{
+                    "key": "Màu",
+                    "value": "Vàng ánh kim"
+                }]
+            },
+            {
+                "_id": {
+                    "$oid": "68f110000000000000000028"
+                },
+                "sku": "MBA13M3-16GB-512GB",
+                "name": "16GB/512GB",
+                "price": 34990000,
+                "stock": 9,
+                "attributes": [{
+                    "key": "Màu",
+                    "value": "Xám Không Gian"
+                }]
+            }
+        ],
+        "brand": "Apple",
+        "images": [
+            "https://cdn2.cellphones.com.vn/x/media/catalog/product/m/b/mba13-m3-midnight-gallery1-202402_3_1_3_1.jpg",
+            "https://cdn2.cellphones.com.vn/x/media/catalog/product/m/b/mba13-m3-silver-gallery1-202402_4_1_3_1.jpg",
+            "https://cdn.tgdd.vn/Products/Images/44/322634/macbook-air-13-inch-m3-2024-512gb-1-750x500.jpg"
+        ],
+        "rating": 0,
+        "numReviews": 0,
+        "numComments": 0,
+        "createdAt": {
+            "$date": "2025-10-29T08:15:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-29T08:15:00.000Z"
         }
-      ]
-    }
-  ],
-  "brand": "Apple",
-  "images": [
-    "https://cdn2.cellphones.com.vn/x/media/catalog/product/m/b/mba13-m3-midnight-gallery1-202402_3_1_3_1.jpg",
-    "https://cdn2.cellphones.com.vn/x/media/catalog/product/m/b/mba13-m3-silver-gallery1-202402_4_1_3_1.jpg",
-    "https://cdn.tgdd.vn/Products/Images/44/322634/macbook-air-13-inch-m3-2024-512gb-1-750x500.jpg"
-  ],
-  "rating": 0,
-  "numReviews": 0,
-  "numComments": 0,
-  "createdAt": {
-    "$date": "2025-10-29T08:15:00.000Z"
-  },
-  "updatedAt": {
-    "$date": "2025-10-29T08:15:00.000Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68f100000000000000000015"
-  },
-  "name": "Lenovo Legion 7i Gen 9",
-  "slug": "lenovo-legion-7i-gen9",
-  "description": "Cỗ máy chiến game đỉnh cao với chip Intel Core i9-14900HX, card đồ họa RTX 4070 và màn hình 240Hz mượt mà.",
-  "category": {
-    "$oid": "68d9582f475f99782d11ddc1"
-  },
-  "price": 49990000,
-  "variants": [
-    {
-      "_id": {
-        "$oid": "68f110000000000000000029"
-      },
-      "sku": "LG7I-16GB-1TB",
-      "name": "16GB/1TB",
-      "price": 49990000,
-      "stock": 8,
-      "attributes": [
-        {
-          "key": "Màu",
-          "value": "Trắng Glacier"
-        }
-      ]
-    }
-  ],
-  "brand": "Lenovo",
-  "images": [
-    "https://p1-ofp.static.pub//fes/cms/2024/09/12/q6fb2891avf5ok5et6ppuhuuilu0cq939626.png",
-    "https://p1-ofp.static.pub//fes/cms/2024/04/11/mi91jmo0vurj72vo6n6yikuh4zpznu073022.png",
-    "https://p3-ofp.static.pub//fes/cms/2024/02/07/u78h5n8n7n6ebwb47xyanypdvoj3a2616774.png"
-  ],
-  "rating": 0,
-  "numReviews": 0,
-  "numComments": 0,
-  "createdAt": {
-    "$date": "2025-10-29T08:20:00.000Z"
-  },
-  "updatedAt": {
-    "$date": "2025-10-29T08:20:00.000Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68f100000000000000000016"
-  },
-  "name": "Sony WH-1000XM5",
-  "slug": "sony-wh-1000xm5",
-  "description": "Tai nghe chống ồn hàng đầu thế giới với chất âm tuyệt vời, pin 30 giờ và thiết kế thoải mái đeo cả ngày.",
-  "category": {
-    "$oid": "68d9582f475f99782d11ddc4"
-  },
-  "price": 8490000,
-  "variants": [
-    {
-      "_id": {
-        "$oid": "68f110000000000000000031"
-      },
-      "sku": "WH1000XM5-BLK",
-      "name": "Màu Đen",
-      "price": 8490000,
-      "stock": 20,
-      "attributes": [
-        {
-          "key": "Loại",
-          "value": "Chụp tai"
-        }
-      ]
     },
     {
-      "_id": {
-        "$oid": "68f110000000000000000032"
-      },
-      "sku": "WH1000XM5-SIL",
-      "name": "Màu Bạc",
-      "price": 8490000,
-      "stock": 15,
-      "attributes": [
-        {
-          "key": "Loại",
-          "value": "Chụp tai"
+        "_id": {
+            "$oid": "68f100000000000000000015"
+        },
+        "name": "Lenovo Legion 7i Gen 9",
+        "slug": "lenovo-legion-7i-gen9",
+        "description": "Cỗ máy chiến game đỉnh cao với chip Intel Core i9-14900HX, card đồ họa RTX 4070 và màn hình 240Hz mượt mà.",
+        "category": {
+            "$oid": "68d9582f475f99782d11ddc1"
+        },
+        "price": 49990000,
+        "variants": [{
+            "_id": {
+                "$oid": "68f110000000000000000029"
+            },
+            "sku": "LG7I-16GB-1TB",
+            "name": "16GB/1TB",
+            "price": 49990000,
+            "stock": 8,
+            "attributes": [{
+                "key": "Màu",
+                "value": "Trắng Glacier"
+            }]
+        }],
+        "brand": "Lenovo",
+        "images": [
+            "https://p1-ofp.static.pub//fes/cms/2024/09/12/q6fb2891avf5ok5et6ppuhuuilu0cq939626.png",
+            "https://p1-ofp.static.pub//fes/cms/2024/04/11/mi91jmo0vurj72vo6n6yikuh4zpznu073022.png",
+            "https://p3-ofp.static.pub//fes/cms/2024/02/07/u78h5n8n7n6ebwb47xyanypdvoj3a2616774.png"
+        ],
+        "rating": 0,
+        "numReviews": 0,
+        "numComments": 0,
+        "createdAt": {
+            "$date": "2025-10-29T08:20:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-29T08:20:00.000Z"
         }
-      ]
-    }
-  ],
-  "brand": "Sony",
-  "images": [
-    "https://cdn.tgdd.vn/Products/Images/54/313692/tai-nghe-bluetooth-chup-tai-sony-wh1000xm5-trang-1-750x500.jpg",
-    "https://songlongmedia.com/media/product/3123_tai_nghe_sony_wh_1000xm5_blue_songlongmedia.png",
-    "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/a/tai-nghe-chup-tai-sony-wh-1000xm5-3.png"
-  ],
-  "rating": 0,
-  "numReviews": 0,
-  "numComments": 0,
-  "createdAt": {
-    "$date": "2025-10-29T08:25:00.000Z"
-  },
-  "updatedAt": {
-    "$date": "2025-10-29T08:25:00.000Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68f100000000000000000017"
-  },
-  "name": "AirPods Pro 2 USB-C",
-  "slug": "airpods-pro-2",
-  "description": "Tai nghe in-ear chống ồn chủ động tốt nhất cho người dùng Apple, chip H2, âm thanh thích ứng và cổng sạc USB-C mới.",
-  "category": {
-    "$oid": "68d9582f475f99782d11ddc4"
-  },
-  "price": 6190000,
-  "variants": [
-    {
-      "_id": {
-        "$oid": "68f110000000000000000033"
-      },
-      "sku": "APPRO2-USBC",
-      "name": "Bản USB-C",
-      "price": 6190000,
-      "stock": 30,
-      "attributes": [
-        {
-          "key": "Màu",
-          "value": "Trắng"
-        }
-      ]
-    }
-  ],
-  "brand": "Apple",
-  "images": [
-    "https://cdn2.fptshop.com.vn/unsafe/2023_9_18_638306528295272368_tai-nghe-airpods-pro-2023-usb-c-dd.jpg",
-    "https://cdn.tgdd.vn/Products/Images/54/315014/tai-nghe-bluetooth-airpods-pro-2nd-gen-usb-c-charge-apple-thumb-1-600x600.jpg",
-    "data:image/jpeg;base64,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"
-  ],
-  "rating": 0,
-  "numReviews": 0,
-  "numComments": 0,
-  "createdAt": {
-    "$date": "2025-10-29T08:30:00.000Z"
-  },
-  "updatedAt": {
-    "$date": "2025-10-29T08:30:00.000Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68f100000000000000000018"
-  },
-  "name": "Loa JBL Charge 5",
-  "slug": "jbl-charge-5",
-  "description": "Loa bluetooth di động với chất âm JBL Pro Sound mạnh mẽ, chống nước bụi IP67 và thời lượng pin lên đến 20 giờ.",
-  "category": {
-    "$oid": "68d9582f475f99782d11ddc4"
-  },
-  "price": 3590000,
-  "variants": [
-    {
-      "_id": {
-        "$oid": "68f110000000000000000035"
-      },
-      "sku": "JBLCH5-BLK",
-      "name": "Đen",
-      "price": 3590000,
-      "stock": 25,
-      "attributes": [
-        {
-          "key": "Màu",
-          "value": "Đen"
-        }
-      ]
     },
     {
-      "_id": {
-        "$oid": "68f110000000000000000036"
-      },
-      "sku": "JBLCH5-BLU",
-      "name": "Xanh Dương",
-      "price": 3590000,
-      "stock": 18,
-      "attributes": [
-        {
-          "key": "Màu",
-          "value": "Xanh"
+        "_id": {
+            "$oid": "68f100000000000000000016"
+        },
+        "name": "Sony WH-1000XM5",
+        "slug": "sony-wh-1000xm5",
+        "description": "Tai nghe chống ồn hàng đầu thế giới với chất âm tuyệt vời, pin 30 giờ và thiết kế thoải mái đeo cả ngày.",
+        "category": {
+            "$oid": "68d9582f475f99782d11ddc4"
+        },
+        "price": 8490000,
+        "variants": [{
+                "_id": {
+                    "$oid": "68f110000000000000000031"
+                },
+                "sku": "WH1000XM5-BLK",
+                "name": "Màu Đen",
+                "price": 8490000,
+                "stock": 20,
+                "attributes": [{
+                    "key": "Loại",
+                    "value": "Chụp tai"
+                }]
+            },
+            {
+                "_id": {
+                    "$oid": "68f110000000000000000032"
+                },
+                "sku": "WH1000XM5-SIL",
+                "name": "Màu Bạc",
+                "price": 8490000,
+                "stock": 15,
+                "attributes": [{
+                    "key": "Loại",
+                    "value": "Chụp tai"
+                }]
+            }
+        ],
+        "brand": "Sony",
+        "images": [
+            "https://cdn.tgdd.vn/Products/Images/54/313692/tai-nghe-bluetooth-chup-tai-sony-wh1000xm5-trang-1-750x500.jpg",
+            "https://songlongmedia.com/media/product/3123_tai_nghe_sony_wh_1000xm5_blue_songlongmedia.png",
+            "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/a/tai-nghe-chup-tai-sony-wh-1000xm5-3.png"
+        ],
+        "rating": 0,
+        "numReviews": 0,
+        "numComments": 0,
+        "createdAt": {
+            "$date": "2025-10-29T08:25:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-29T08:25:00.000Z"
         }
-      ]
-    }
-  ],
-  "brand": "JBL",
-  "images": [
-    "https://cdn.tgdd.vn/Products/Images/2162/251230/bluetooth-jbl-charge-5-2-750x500.jpg",
-    "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/l/o/loa-jbl-charge-5-xanh-duong-blue-4.jpg",
-    "https://hdradio.vn/upload/hinhanh/loa-di-dong/jbl/charge-5/loa-jbl-charge-5-mau-xanh-moi-chinh-hang-cc.jpg"
-  ],
-  "rating": 0,
-  "numReviews": 0,
-  "numComments": 0,
-  "createdAt": {
-    "$date": "2025-10-29T08:35:00.000Z"
-  },
-  "updatedAt": {
-    "$date": "2025-10-29T08:35:00.000Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68f100000000000000000019"
-  },
-  "name": "Apple Watch Series 9",
-  "slug": "apple-watch-series-9",
-  "description": "Đồng hồ thông minh mạnh mẽ nhất của Apple với chip S9, màn hình sáng gấp đôi và tính năng Double Tap độc đáo.",
-  "category": {
-    "$oid": "68d9582f475f99782d11ddc5"
-  },
-  "price": 10490000,
-  "variants": [
-    {
-      "_id": {
-        "$oid": "68f110000000000000000037"
-      },
-      "sku": "AW9-41MM-PINK",
-      "name": "41mm Nhôm",
-      "price": 10490000,
-      "stock": 12,
-      "attributes": [
-        {
-          "key": "Màu",
-          "value": "Hồng"
-        }
-      ]
     },
     {
-      "_id": {
-        "$oid": "68f110000000000000000038"
-      },
-      "sku": "AW9-45MM-MIDNIGHT",
-      "name": "45mm Nhôm",
-      "price": 11290000,
-      "stock": 10,
-      "attributes": [
-        {
-          "key": "Màu",
-          "value": "Đen Midnight"
+        "_id": {
+            "$oid": "68f100000000000000000017"
+        },
+        "name": "AirPods Pro 2 USB-C",
+        "slug": "airpods-pro-2",
+        "description": "Tai nghe in-ear chống ồn chủ động tốt nhất cho người dùng Apple, chip H2, âm thanh thích ứng và cổng sạc USB-C mới.",
+        "category": {
+            "$oid": "68d9582f475f99782d11ddc4"
+        },
+        "price": 6190000,
+        "variants": [{
+            "_id": {
+                "$oid": "68f110000000000000000033"
+            },
+            "sku": "APPRO2-USBC",
+            "name": "Bản USB-C",
+            "price": 6190000,
+            "stock": 30,
+            "attributes": [{
+                "key": "Màu",
+                "value": "Trắng"
+            }]
+        }],
+        "brand": "Apple",
+        "images": [
+            "https://cdn2.fptshop.com.vn/unsafe/2023_9_18_638306528295272368_tai-nghe-airpods-pro-2023-usb-c-dd.jpg",
+            "https://cdn.tgdd.vn/Products/Images/54/315014/tai-nghe-bluetooth-airpods-pro-2nd-gen-usb-c-charge-apple-thumb-1-600x600.jpg",
+            "data:image/jpeg;base64,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"
+        ],
+        "rating": 0,
+        "numReviews": 0,
+        "numComments": 0,
+        "createdAt": {
+            "$date": "2025-10-29T08:30:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-29T08:30:00.000Z"
         }
-      ]
-    }
-  ],
-  "brand": "Apple",
-  "images": [
-    "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/a/p/apple_lte_3__1.png",
-    "https://cdn.nguyenkimmall.com/images/thumbnails/382/382/detailed/892/10056411-apple-watch-s9-gps-41mm-sport-loop-light-pink-s-m-1.jpg",
-    "https://product.hstatic.net/200000785683/product/-nc-s9_vw_34fr_watch-face-41-aluminum-midnight-s9_vw_34fr_wf_co_geo_vn_7adfac51e4f147f183d32003ec105975_large.jpeg"
-  ],
-  "rating": 0,
-  "numReviews": 0,
-  "numComments": 0,
-  "createdAt": {
-    "$date": "2025-10-29T08:40:00.000Z"
-  },
-  "updatedAt": {
-    "$date": "2025-10-29T08:40:00.000Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68f100000000000000000020"
-  },
-  "name": "Samsung Galaxy Watch 6",
-  "slug": "samsung-galaxy-watch-6",
-  "description": "Đồng hồ thông minh theo dõi sức khỏe toàn diện, màn hình lớn hơn, viền mỏng hơn và tính năng theo dõi giấc ngủ chuyên sâu.",
-  "category": {
-    "$oid": "68d9582f475f99782d11ddc5"
-  },
-  "price": 6490000,
-  "variants": [
-    {
-      "_id": {
-        "$oid": "68f110000000000000000039"
-      },
-      "sku": "GW6-40MM-SILVER",
-      "name": "40mm Bluetooth",
-      "price": 6490000,
-      "stock": 15,
-      "attributes": [
-        {
-          "key": "Màu",
-          "value": "Bạc"
-        }
-      ]
     },
     {
-      "_id": {
-        "$oid": "68f110000000000000000040"
-      },
-      "sku": "GW6-44MM-GRAPHITE",
-      "name": "44mm Bluetooth",
-      "price": 6990000,
-      "stock": 10,
-      "attributes": [
-        {
-          "key": "Màu",
-          "value": "Đen Graphite"
+        "_id": {
+            "$oid": "68f100000000000000000018"
+        },
+        "name": "Loa JBL Charge 5",
+        "slug": "jbl-charge-5",
+        "description": "Loa bluetooth di động với chất âm JBL Pro Sound mạnh mẽ, chống nước bụi IP67 và thời lượng pin lên đến 20 giờ.",
+        "category": {
+            "$oid": "68d9582f475f99782d11ddc4"
+        },
+        "price": 3590000,
+        "variants": [{
+                "_id": {
+                    "$oid": "68f110000000000000000035"
+                },
+                "sku": "JBLCH5-BLK",
+                "name": "Đen",
+                "price": 3590000,
+                "stock": 25,
+                "attributes": [{
+                    "key": "Màu",
+                    "value": "Đen"
+                }]
+            },
+            {
+                "_id": {
+                    "$oid": "68f110000000000000000036"
+                },
+                "sku": "JBLCH5-BLU",
+                "name": "Xanh Dương",
+                "price": 3590000,
+                "stock": 18,
+                "attributes": [{
+                    "key": "Màu",
+                    "value": "Xanh"
+                }]
+            }
+        ],
+        "brand": "JBL",
+        "images": [
+            "https://cdn.tgdd.vn/Products/Images/2162/251230/bluetooth-jbl-charge-5-2-750x500.jpg",
+            "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/l/o/loa-jbl-charge-5-xanh-duong-blue-4.jpg",
+            "https://hdradio.vn/upload/hinhanh/loa-di-dong/jbl/charge-5/loa-jbl-charge-5-mau-xanh-moi-chinh-hang-cc.jpg"
+        ],
+        "rating": 0,
+        "numReviews": 0,
+        "numComments": 0,
+        "createdAt": {
+            "$date": "2025-10-29T08:35:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-29T08:35:00.000Z"
         }
-      ]
-    }
-  ],
-  "brand": "Samsung",
-  "images": [
-    "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/w/a/watch6_classic_thumbnail_2.png",
-    "https://bachlongstore.vn/vnt_upload/product/08_2023/samsung_galaxy_watch6_44mm_bac_ksp_600x600.jpg",
-    "https://didongmoi.com.vn/upload/images/product/san-pham-khac/samsung-galaxy-watch6-classic-47mm-gia-re-1.jpg"
-  ],
-  "rating": 0,
-  "numReviews": 0,
-  "numComments": 0,
-  "createdAt": {
-    "$date": "2025-10-29T08:45:00.000Z"
-  },
-  "updatedAt": {
-    "$date": "2025-10-29T08:45:00.000Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68f100000000000000000023"
-  },
-  "name": "Chuột Logitech MX Master 3S",
-  "slug": "logitech-mx-master-3s",
-  "description": "Chuột không dây cao cấp dành cho công việc, cảm biến 8000 DPI, cuộn siêu tốc MagSpeed và click chuột siêu êm.",
-  "category": {
-    "$oid": "68d9582f475f99782d11ddc2"
-  },
-  "price": 2490000,
-  "variants": [
-    {
-      "_id": {
-        "$oid": "68f110000000000000000045"
-      },
-      "sku": "MXM3S-GRAPHITE",
-      "name": "Màu Than Chì",
-      "price": 2490000,
-      "stock": 14,
-      "attributes": [
-        {
-          "key": "Màu",
-          "value": "Than Chì"
-        }
-      ]
-    }
-  ],
-  "brand": "Logitech",
-  "images": [
-    "https://cdn2.fptshop.com.vn/unsafe/564x0/filters:quality(80)/Uploads/images/2015/chuot-bluetooth-logitech-mx-master-3s-1.jpg",
-    "https://product.hstatic.net/200000722513/product/mx-master-3s-mouse-top-view-pale-gray_41dba78b9e384508aa5bc3109f249523_ec963b4f86984fdea690801a3ae8ad35.png",
-    "https://tugia.vn/sites/default/files/48064_logitech_mx_master_3s_grey_a6.jpg"
-  ],
-  "rating": 0,
-  "numReviews": 0,
-  "numComments": 0,
-  "createdAt": {
-    "$date": "2025-10-29T08:50:00.000Z"
-  },
-  "updatedAt": {
-    "$date": "2025-10-29T08:50:00.000Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68f100000000000000000024"
-  },
-  "name": "Bàn phím cơ Keychron K6 Pro",
-  "slug": "keychron-k6-pro",
-  "description": "Bàn phím cơ custom không dây QMK/VIA, layout 65% nhỏ gọn, hỗ trợ hotswap và kết nối đa thiết bị.",
-  "category": {
-    "$oid": "68d9582f475f99782d11ddc2"
-  },
-  "price": 2290000,
-  "variants": [
-    {
-      "_id": {
-        "$oid": "68f110000000000000000047"
-      },
-      "sku": "K6PRO-RED",
-      "name": "Red Switch",
-      "price": 2290000,
-      "stock": 16,
-      "attributes": [
-        {
-          "key": "Switch",
-          "value": "Red"
-        }
-      ]
     },
     {
-      "_id": {
-        "$oid": "68f110000000000000000048"
-      },
-      "sku": "K6PRO-BROWN",
-      "name": "Brown Switch",
-      "price": 2290000,
-      "stock": 12,
-      "attributes": [
-        {
-          "key": "Switch",
-          "value": "Brown"
+        "_id": {
+            "$oid": "68f100000000000000000019"
+        },
+        "name": "Apple Watch Series 9",
+        "slug": "apple-watch-series-9",
+        "description": "Đồng hồ thông minh mạnh mẽ nhất của Apple với chip S9, màn hình sáng gấp đôi và tính năng Double Tap độc đáo.",
+        "category": {
+            "$oid": "68d9582f475f99782d11ddc5"
+        },
+        "price": 10490000,
+        "variants": [{
+                "_id": {
+                    "$oid": "68f110000000000000000037"
+                },
+                "sku": "AW9-41MM-PINK",
+                "name": "41mm Nhôm",
+                "price": 10490000,
+                "stock": 12,
+                "attributes": [{
+                    "key": "Màu",
+                    "value": "Hồng"
+                }]
+            },
+            {
+                "_id": {
+                    "$oid": "68f110000000000000000038"
+                },
+                "sku": "AW9-45MM-MIDNIGHT",
+                "name": "45mm Nhôm",
+                "price": 11290000,
+                "stock": 10,
+                "attributes": [{
+                    "key": "Màu",
+                    "value": "Đen Midnight"
+                }]
+            }
+        ],
+        "brand": "Apple",
+        "images": [
+            "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/a/p/apple_lte_3__1.png",
+            "https://cdn.nguyenkimmall.com/images/thumbnails/382/382/detailed/892/10056411-apple-watch-s9-gps-41mm-sport-loop-light-pink-s-m-1.jpg",
+            "https://product.hstatic.net/200000785683/product/-nc-s9_vw_34fr_watch-face-41-aluminum-midnight-s9_vw_34fr_wf_co_geo_vn_7adfac51e4f147f183d32003ec105975_large.jpeg"
+        ],
+        "rating": 0,
+        "numReviews": 0,
+        "numComments": 0,
+        "createdAt": {
+            "$date": "2025-10-29T08:40:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-29T08:40:00.000Z"
         }
-      ]
-    }
-  ],
-  "brand": "Keychron",
-  "images": [
-    "https://owlgaming.vn/wp-content/uploads/2022/09/ban-phim-co-keychron-k6-pro.jpg",
-    "https://npcshop.vn/media/product/250-3941-keychron_k6_nhua_khong_led.jpg",
-    "https://vn-live-01.slatic.net/p/52f7749ecc46243b12ca3049df7f078e.png"
-  ],
-  "rating": 0,
-  "numReviews": 0,
-  "numComments": 0,
-  "createdAt": {
-    "$date": "2025-10-29T08:55:00.000Z"
-  },
-  "updatedAt": {
-    "$date": "2025-10-29T08:55:00.000Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "6901d3b881f25a054af61d14"
-  },
-  "name": "Intel Core i9-14900K",
-  "slug": "intel-core-i9-14900k",
-  "description": "Bộ vi xử lý Intel Core thế hệ 14 mạnh mẽ nhất, 24 nhân 32 luồng, xung nhịp lên tới 6.0GHz. Trùm cuối cho PC Gaming và Workstation.",
-  "category": {
-    "$oid": "6901d157c092af8bb7fc07a5"
-  },
-  "price": 14990000,
-  "variants": [
-    {
-      "_id": {
-        "$oid": "6901d3b881f25a054af61d15"
-      },
-      "sku": "I9-14900K-BOX",
-      "name": "Box Chính Hãng",
-      "price": 14990000,
-      "stock": 8,
-      "attributes": [
-        {
-          "key": "Bảo hành",
-          "value": "36 tháng"
-        }
-      ]
-    }
-  ],
-  "brand": "Intel",
-  "images": [
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdgtZvY5IEk-Xl-7S6XUNsxCzJ7Iw5N5bxkg&s",
-    "https://product.hstatic.net/200000722513/product/i9k_379efd950af74727a83b02c13817a3a7.png",
-    "https://songphuong.vn/Content/uploads/2023/10/CPU-Intel-Core-i9-14900-i9-14900F-i9-14900K-i9-14900KF-5.jpg"
-  ],
-  "rating": 4,
-  "numReviews": 1,
-  "numComments": 1,
-  "createdAt": {
-    "$date": "2025-10-29T09:05:00.000Z"
-  },
-  "updatedAt": {
-    "$date": "2025-11-28T15:04:59.652Z"
-  }
-},
-{
-  "_id": {
-    "$oid": "68f100000000000000000026"
-  },
-  "name": "SSD Samsung 990 PRO 1TB",
-  "slug": "ssd-samsung-990-pro-1tb",
-  "description": "Ổ cứng SSD M.2 PCIe Gen 4.0 nhanh nhất thế giới, tốc độ đọc lên tới 7450MB/s. Giải pháp nâng cấp hoàn hảo cho PC và PS5.",
-  "category": {
-    "$oid": "6901d157c092af8bb7fc07a5"
-  },
-  "price": 3290000,
-  "variants": [
-    {
-      "_id": {
-        "$oid": "68f110000000000000000051"
-      },
-      "sku": "MZ-V9P1T0",
-      "name": "1TB",
-      "price": 3290000,
-      "stock": 19,
-      "attributes": [
-        {
-          "key": "Dung lượng",
-          "value": "1TB"
-        }
-      ]
     },
     {
-      "_id": {
-        "$oid": "68f110000000000000000052"
-      },
-      "sku": "MZ-V9P2T0",
-      "name": "2TB",
-      "price": 5590000,
-      "stock": 10,
-      "attributes": [
-        {
-          "key": "Dung lượng",
-          "value": "2TB"
+        "_id": {
+            "$oid": "68f100000000000000000020"
+        },
+        "name": "Samsung Galaxy Watch 6",
+        "slug": "samsung-galaxy-watch-6",
+        "description": "Đồng hồ thông minh theo dõi sức khỏe toàn diện, màn hình lớn hơn, viền mỏng hơn và tính năng theo dõi giấc ngủ chuyên sâu.",
+        "category": {
+            "$oid": "68d9582f475f99782d11ddc5"
+        },
+        "price": 6490000,
+        "variants": [{
+                "_id": {
+                    "$oid": "68f110000000000000000039"
+                },
+                "sku": "GW6-40MM-SILVER",
+                "name": "40mm Bluetooth",
+                "price": 6490000,
+                "stock": 15,
+                "attributes": [{
+                    "key": "Màu",
+                    "value": "Bạc"
+                }]
+            },
+            {
+                "_id": {
+                    "$oid": "68f110000000000000000040"
+                },
+                "sku": "GW6-44MM-GRAPHITE",
+                "name": "44mm Bluetooth",
+                "price": 6990000,
+                "stock": 10,
+                "attributes": [{
+                    "key": "Màu",
+                    "value": "Đen Graphite"
+                }]
+            }
+        ],
+        "brand": "Samsung",
+        "images": [
+            "https://cdn2.cellphones.com.vn/insecure/rs:fill:358:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/w/a/watch6_classic_thumbnail_2.png",
+            "https://bachlongstore.vn/vnt_upload/product/08_2023/samsung_galaxy_watch6_44mm_bac_ksp_600x600.jpg",
+            "https://didongmoi.com.vn/upload/images/product/san-pham-khac/samsung-galaxy-watch6-classic-47mm-gia-re-1.jpg"
+        ],
+        "rating": 0,
+        "numReviews": 0,
+        "numComments": 0,
+        "createdAt": {
+            "$date": "2025-10-29T08:45:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-29T08:45:00.000Z"
         }
-      ]
-    }
-  ],
-  "brand": "Samsung",
-  "images": [
-    "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_2__10_38.png",
-    "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_4__8_30.png",
-    "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_5__10_26.png"
-  ],
-  "rating": 5,
-  "numReviews": 1,
-  "numComments": 1,
-  "createdAt": {
-    "$date": "2025-10-29T09:10:00.000Z"
-  },
-  "updatedAt": {
-    "$date": "2025-11-28T15:50:29.892Z"
-  }
-},
+    },
+    {
+        "_id": {
+            "$oid": "68f100000000000000000023"
+        },
+        "name": "Chuột Logitech MX Master 3S",
+        "slug": "logitech-mx-master-3s",
+        "description": "Chuột không dây cao cấp dành cho công việc, cảm biến 8000 DPI, cuộn siêu tốc MagSpeed và click chuột siêu êm.",
+        "category": {
+            "$oid": "68d9582f475f99782d11ddc2"
+        },
+        "price": 2490000,
+        "variants": [{
+            "_id": {
+                "$oid": "68f110000000000000000045"
+            },
+            "sku": "MXM3S-GRAPHITE",
+            "name": "Màu Than Chì",
+            "price": 2490000,
+            "stock": 14,
+            "attributes": [{
+                "key": "Màu",
+                "value": "Than Chì"
+            }]
+        }],
+        "brand": "Logitech",
+        "images": [
+            "https://cdn2.fptshop.com.vn/unsafe/564x0/filters:quality(80)/Uploads/images/2015/chuot-bluetooth-logitech-mx-master-3s-1.jpg",
+            "https://product.hstatic.net/200000722513/product/mx-master-3s-mouse-top-view-pale-gray_41dba78b9e384508aa5bc3109f249523_ec963b4f86984fdea690801a3ae8ad35.png",
+            "https://tugia.vn/sites/default/files/48064_logitech_mx_master_3s_grey_a6.jpg"
+        ],
+        "rating": 0,
+        "numReviews": 0,
+        "numComments": 0,
+        "createdAt": {
+            "$date": "2025-10-29T08:50:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-29T08:50:00.000Z"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "68f100000000000000000024"
+        },
+        "name": "Bàn phím cơ Keychron K6 Pro",
+        "slug": "keychron-k6-pro",
+        "description": "Bàn phím cơ custom không dây QMK/VIA, layout 65% nhỏ gọn, hỗ trợ hotswap và kết nối đa thiết bị.",
+        "category": {
+            "$oid": "68d9582f475f99782d11ddc2"
+        },
+        "price": 2290000,
+        "variants": [{
+                "_id": {
+                    "$oid": "68f110000000000000000047"
+                },
+                "sku": "K6PRO-RED",
+                "name": "Red Switch",
+                "price": 2290000,
+                "stock": 16,
+                "attributes": [{
+                    "key": "Switch",
+                    "value": "Red"
+                }]
+            },
+            {
+                "_id": {
+                    "$oid": "68f110000000000000000048"
+                },
+                "sku": "K6PRO-BROWN",
+                "name": "Brown Switch",
+                "price": 2290000,
+                "stock": 12,
+                "attributes": [{
+                    "key": "Switch",
+                    "value": "Brown"
+                }]
+            }
+        ],
+        "brand": "Keychron",
+        "images": [
+            "https://owlgaming.vn/wp-content/uploads/2022/09/ban-phim-co-keychron-k6-pro.jpg",
+            "https://npcshop.vn/media/product/250-3941-keychron_k6_nhua_khong_led.jpg",
+            "https://vn-live-01.slatic.net/p/52f7749ecc46243b12ca3049df7f078e.png"
+        ],
+        "rating": 0,
+        "numReviews": 0,
+        "numComments": 0,
+        "createdAt": {
+            "$date": "2025-10-29T08:55:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-10-29T08:55:00.000Z"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "6901d3b881f25a054af61d14"
+        },
+        "name": "Intel Core i9-14900K",
+        "slug": "intel-core-i9-14900k",
+        "description": "Bộ vi xử lý Intel Core thế hệ 14 mạnh mẽ nhất, 24 nhân 32 luồng, xung nhịp lên tới 6.0GHz. Trùm cuối cho PC Gaming và Workstation.",
+        "category": {
+            "$oid": "6901d157c092af8bb7fc07a5"
+        },
+        "price": 14990000,
+        "variants": [{
+            "_id": {
+                "$oid": "6901d3b881f25a054af61d15"
+            },
+            "sku": "I9-14900K-BOX",
+            "name": "Box Chính Hãng",
+            "price": 14990000,
+            "stock": 8,
+            "attributes": [{
+                "key": "Bảo hành",
+                "value": "36 tháng"
+            }]
+        }],
+        "brand": "Intel",
+        "images": [
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQdgtZvY5IEk-Xl-7S6XUNsxCzJ7Iw5N5bxkg&s",
+            "https://product.hstatic.net/200000722513/product/i9k_379efd950af74727a83b02c13817a3a7.png",
+            "https://songphuong.vn/Content/uploads/2023/10/CPU-Intel-Core-i9-14900-i9-14900F-i9-14900K-i9-14900KF-5.jpg"
+        ],
+        "rating": 4,
+        "numReviews": 1,
+        "numComments": 1,
+        "createdAt": {
+            "$date": "2025-10-29T09:05:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-11-28T15:04:59.652Z"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "68f100000000000000000026"
+        },
+        "name": "SSD Samsung 990 PRO 1TB",
+        "slug": "ssd-samsung-990-pro-1tb",
+        "description": "Ổ cứng SSD M.2 PCIe Gen 4.0 nhanh nhất thế giới, tốc độ đọc lên tới 7450MB/s. Giải pháp nâng cấp hoàn hảo cho PC và PS5.",
+        "category": {
+            "$oid": "6901d157c092af8bb7fc07a5"
+        },
+        "price": 3290000,
+        "variants": [{
+                "_id": {
+                    "$oid": "68f110000000000000000051"
+                },
+                "sku": "MZ-V9P1T0",
+                "name": "1TB",
+                "price": 3290000,
+                "stock": 19,
+                "attributes": [{
+                    "key": "Dung lượng",
+                    "value": "1TB"
+                }]
+            },
+            {
+                "_id": {
+                    "$oid": "68f110000000000000000052"
+                },
+                "sku": "MZ-V9P2T0",
+                "name": "2TB",
+                "price": 5590000,
+                "stock": 10,
+                "attributes": [{
+                    "key": "Dung lượng",
+                    "value": "2TB"
+                }]
+            }
+        ],
+        "brand": "Samsung",
+        "images": [
+            "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_2__10_38.png",
+            "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_4__8_30.png",
+            "https://cdn2.cellphones.com.vn/insecure/rs:fill:0:358/q:90/plain/https://cellphones.com.vn/media/catalog/product/t/e/text_ng_n_5__10_26.png"
+        ],
+        "rating": 5,
+        "numReviews": 1,
+        "numComments": 1,
+        "createdAt": {
+            "$date": "2025-10-29T09:10:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2025-11-28T15:50:29.892Z"
+        }
+    },
 
-  {
-    "_id": {
-      "$oid": "68f100000000000000000081"
-    },
-    "name": "HP Omen 16 - Core i7, RAM 16GB",
-    "slug": "hp-omen-16-i7-16gb",
-    "description": "Laptop Gaming cao cấp từ HP với chip Intel Core i7, card đồ họa RTX 4060 và RAM 16GB. Màn hình tần số quét cao giúp soi rõ từng góc kê tâm, chiến mượt mọi tựa game eSports FPS hiện nay như CS2 hay Valorant.",
-    "category": {
-      "$oid": "68d9582f475f99782d11ddc1"
-    },
-    "price": 35990000,
-    "variants": [
-      {
+    {
         "_id": {
-          "$oid": "68f110000000000000000081"
+            "$oid": "68f100000000000000000081"
         },
-        "sku": "OMEN16-16GB-512GB",
-        "name": "16GB/512GB",
+        "name": "HP Omen 16 - Core i7, RAM 16GB",
+        "slug": "hp-omen-16-i7-16gb",
+        "description": "Laptop Gaming cao cấp từ HP với chip Intel Core i7, card đồ họa RTX 4060 và RAM 16GB. Màn hình tần số quét cao giúp soi rõ từng góc kê tâm, chiến mượt mọi tựa game eSports FPS hiện nay như CS2 hay Valorant.",
+        "category": {
+            "$oid": "68d9582f475f99782d11ddc1"
+        },
         "price": 35990000,
-        "stock": 10,
-        "attributes": [
-          {
-            "key": "Màu",
-            "value": "Đen Nhám"
-          }
-        ]
-      }
-    ],
-    "brand": "HP",
-    "images": [
-      "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=500&q=80",
-      "https://cdn.tgdd.vn/Products/Images/44/308118/hp-omen-16-n0087ax-r7-7c0t7pa-thumb-600x600.jpg",
-      "https://xgear.net/wp-content/uploads/2023/08/Omen-16-2023-Intel-3.jpg"
-    ],
-    "rating": 0,
-    "numReviews": 0,
-    "numComments": 0,
-    "createdAt": {
-      "$date": "2026-03-29T08:00:00.000Z"
-    },
-    "updatedAt": {
-      "$date": "2026-03-29T08:00:00.000Z"
-    }
-  },
-  {
-    "_id": {
-      "$oid": "68f100000000000000000082"
-    },
-    "name": "HP Victus 15 - Ryzen 7, RAM 16GB",
-    "slug": "hp-victus-15-r7-16gb",
-    "description": "Laptop Gaming quốc dân siêu ngon trong tầm giá. Trang bị card đồ họa rời và RAM 16GB đa nhiệm cực tốt, xử lý nhẹ nhàng các pha combat tổng khi đi rừng hoặc đi top trong Liên Minh Huyền Thoại.",
-    "category": {
-      "$oid": "68d9582f475f99782d11ddc1"
-    },
-    "price": 22490000,
-    "variants": [
-      {
-        "_id": {
-          "$oid": "68f110000000000000000082"
+        "variants": [{
+            "_id": {
+                "$oid": "68f110000000000000000081"
+            },
+            "sku": "OMEN16-16GB-512GB",
+            "name": "16GB/512GB",
+            "price": 35990000,
+            "stock": 10,
+            "attributes": [{
+                "key": "Màu",
+                "value": "Đen Nhám"
+            }]
+        }],
+        "brand": "HP",
+        "images": [
+            "https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=500&q=80",
+            "https://cdn.tgdd.vn/Products/Images/44/308118/hp-omen-16-n0087ax-r7-7c0t7pa-thumb-600x600.jpg",
+            "https://xgear.net/wp-content/uploads/2023/08/Omen-16-2023-Intel-3.jpg"
+        ],
+        "rating": 0,
+        "numReviews": 0,
+        "numComments": 0,
+        "createdAt": {
+            "$date": "2026-03-29T08:00:00.000Z"
         },
-        "sku": "VICTUS15-16GB-512GB",
-        "name": "16GB/512GB",
+        "updatedAt": {
+            "$date": "2026-03-29T08:00:00.000Z"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "68f100000000000000000082"
+        },
+        "name": "HP Victus 15 - Ryzen 7, RAM 16GB",
+        "slug": "hp-victus-15-r7-16gb",
+        "description": "Laptop Gaming quốc dân siêu ngon trong tầm giá. Trang bị card đồ họa rời và RAM 16GB đa nhiệm cực tốt, xử lý nhẹ nhàng các pha combat tổng khi đi rừng hoặc đi top trong Liên Minh Huyền Thoại.",
+        "category": {
+            "$oid": "68d9582f475f99782d11ddc1"
+        },
         "price": 22490000,
-        "stock": 15,
-        "attributes": [
-          {
-            "key": "Màu",
-            "value": "Xanh Đen"
-          }
-        ]
-      }
-    ],
-    "brand": "HP",
-    "images": [
-      "https://cdnv2.tgdd.vn/mwg-static/tgdd/Products/Images/44/341623/hp-victus-15-fb3116ax-r7-7445hs-bx8u4pa-1-638936185782817746-750x500.jpg",
-      "https://cdn.tgdd.vn/Products/Images/44/311145/hp-victus-15-fb1022ax-r5-8c5l0pa-thumb-600x600.jpg",
-      "https://laptopaz.vn/media/product/2903_hp_victus_15_fa0031dx_1_laptopaz.jpg"
-    ],
-    "rating": 0,
-    "numReviews": 0,
-    "numComments": 0,
-    "createdAt": {
-      "$date": "2026-03-29T08:05:00.000Z"
-    },
-    "updatedAt": {
-      "$date": "2026-03-29T08:05:00.000Z"
-    }
-  },
-  {
-    "_id": {
-      "$oid": "68f100000000000000000083"
-    },
-    "name": "HP Pavilion 15 - Core i5, RAM 8GB",
-    "slug": "hp-pavilion-15-i5-8gb",
-    "description": "Laptop sinh viên, nhân viên văn phòng lý tưởng. Cấu hình ổn định với RAM 8GB, thiết kế mỏng nhẹ, sang trọng với nắp lưng kim loại.",
-    "category": {
-      "$oid": "68d9582f475f99782d11ddc1"
-    },
-    "price": 16990000,
-    "variants": [
-      {
-        "_id": {
-          "$oid": "68f110000000000000000083"
+        "variants": [{
+            "_id": {
+                "$oid": "68f110000000000000000082"
+            },
+            "sku": "VICTUS15-16GB-512GB",
+            "name": "16GB/512GB",
+            "price": 22490000,
+            "stock": 15,
+            "attributes": [{
+                "key": "Màu",
+                "value": "Xanh Đen"
+            }]
+        }],
+        "brand": "HP",
+        "images": [
+            "https://cdnv2.tgdd.vn/mwg-static/tgdd/Products/Images/44/341623/hp-victus-15-fb3116ax-r7-7445hs-bx8u4pa-1-638936185782817746-750x500.jpg",
+            "https://cdn.tgdd.vn/Products/Images/44/311145/hp-victus-15-fb1022ax-r5-8c5l0pa-thumb-600x600.jpg",
+            "https://laptopaz.vn/media/product/2903_hp_victus_15_fa0031dx_1_laptopaz.jpg"
+        ],
+        "rating": 0,
+        "numReviews": 0,
+        "numComments": 0,
+        "createdAt": {
+            "$date": "2026-03-29T08:05:00.000Z"
         },
-        "sku": "PAV15-8GB-512GB",
-        "name": "8GB/512GB",
+        "updatedAt": {
+            "$date": "2026-03-29T08:05:00.000Z"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "68f100000000000000000083"
+        },
+        "name": "HP Pavilion 15 - Core i5, RAM 8GB",
+        "slug": "hp-pavilion-15-i5-8gb",
+        "description": "Laptop sinh viên, nhân viên văn phòng lý tưởng. Cấu hình ổn định với RAM 8GB, thiết kế mỏng nhẹ, sang trọng với nắp lưng kim loại.",
+        "category": {
+            "$oid": "68d9582f475f99782d11ddc1"
+        },
         "price": 16990000,
-        "stock": 25,
-        "attributes": [
-          {
-            "key": "Màu",
-            "value": "Bạc"
-          }
-        ]
-      }
-    ],
-    "brand": "HP",
-    "images": [
-      "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=500&q=80",
-      "https://cdn.tgdd.vn/Products/Images/44/302146/hp-pavilion-15-eg2056tu-i5-6k786pa-thumb-600x600.jpg",
-      "https://laptop88.vn/media/product/8276_hp_pavilion_15_eg3093tu_8c5l4pa.jpg"
-    ],
-    "rating": 0,
-    "numReviews": 0,
-    "numComments": 0,
-    "createdAt": {
-      "$date": "2026-03-29T08:10:00.000Z"
-    },
-    "updatedAt": {
-      "$date": "2026-03-29T08:10:00.000Z"
-    }
-  },
-  {
-    "_id": {
-      "$oid": "68f100000000000000000091"
-    },
-    "name": "Ổ cứng SSD WD Black SN850X 2TB PCIe Gen 4",
-    "slug": "wd-black-sn850x-2tb",
-    "description": "Ổ cứng SSD siêu tốc độ dành cho hệ thống PC High-end. Tốc độ đọc lên tới 7300MB/s, giúp load game siêu nhanh, thả khói hay spam skill cường độ cao không bao giờ lo giật lag hay rớt FPS.",
-    "category": {
-      "$oid": "6901d157c092af8bb7fc07a5"
-    },
-    "price": 4590000,
-    "variants": [
-      {
-        "_id": {
-          "$oid": "68f110000000000000000091"
+        "variants": [{
+            "_id": {
+                "$oid": "68f110000000000000000083"
+            },
+            "sku": "PAV15-8GB-512GB",
+            "name": "8GB/512GB",
+            "price": 16990000,
+            "stock": 25,
+            "attributes": [{
+                "key": "Màu",
+                "value": "Bạc"
+            }]
+        }],
+        "brand": "HP",
+        "images": [
+            "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?w=500&q=80",
+            "https://cdn.tgdd.vn/Products/Images/44/302146/hp-pavilion-15-eg2056tu-i5-6k786pa-thumb-600x600.jpg",
+            "https://laptop88.vn/media/product/8276_hp_pavilion_15_eg3093tu_8c5l4pa.jpg"
+        ],
+        "rating": 0,
+        "numReviews": 0,
+        "numComments": 0,
+        "createdAt": {
+            "$date": "2026-03-29T08:10:00.000Z"
         },
-        "sku": "WDBLACK-2TB",
-        "name": "2TB",
+        "updatedAt": {
+            "$date": "2026-03-29T08:10:00.000Z"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "68f100000000000000000091"
+        },
+        "name": "Ổ cứng SSD WD Black SN850X 2TB PCIe Gen 4",
+        "slug": "wd-black-sn850x-2tb",
+        "description": "Ổ cứng SSD siêu tốc độ dành cho hệ thống PC High-end. Tốc độ đọc lên tới 7300MB/s, giúp load game siêu nhanh, thả khói hay spam skill cường độ cao không bao giờ lo giật lag hay rớt FPS.",
+        "category": {
+            "$oid": "6901d157c092af8bb7fc07a5"
+        },
         "price": 4590000,
-        "stock": 12,
-        "attributes": [
-          {
-            "key": "Dung lượng",
-            "value": "2TB"
-          }
-        ]
-      }
-    ],
-    "brand": "Western Digital",
-    "images": [
-      "https://product.hstatic.net/200000722513/product/o-cung-ssd-wd-black-sn850x-1tb-m2-pcie-4.0-wds100t2x0e-hinh-6_9fcfa09c0e494107ba661b3a975555e9_grande.png",
-      "https://techspace.vn/wp-content/uploads/2022/12/WD_BLACK_SN850X_NVMe_SSD_2TB_1.jpg",
-      "https://nguyencongpc.vn/media/product/23304-ssd-wd-black-sn850x-1tb-m2-2280-pcie-nvme-gen-4x4-wds100t2x0e.jpg"
-    ],
-    "rating": 5,
-    "numReviews": 2,
-    "numComments": 1,
-    "createdAt": {
-      "$date": "2026-03-29T20:00:00.000Z"
-    },
-    "updatedAt": {
-      "$date": "2026-03-29T20:00:00.000Z"
-    }
-  },
-  {
-    "_id": {
-      "$oid": "68f100000000000000000092"
-    },
-    "name": "Ổ cứng SSD Kingston NV2 1TB PCIe 4.0",
-    "slug": "kingston-nv2-1tb",
-    "description": "Lựa chọn SSD quốc dân ngon - bổ - rẻ. Dung lượng 1TB thoải mái lưu trữ source code đồ án, phần mềm nặng và cài đặt các tựa game MOBA, FPS phổ biến hiện nay.",
-    "category": {
-      "$oid": "6901d157c092af8bb7fc07a5"
-    },
-    "price": 1450000,
-    "variants": [
-      {
-        "_id": {
-          "$oid": "68f110000000000000000092"
+        "variants": [{
+            "_id": {
+                "$oid": "68f110000000000000000091"
+            },
+            "sku": "WDBLACK-2TB",
+            "name": "2TB",
+            "price": 4590000,
+            "stock": 12,
+            "attributes": [{
+                "key": "Dung lượng",
+                "value": "2TB"
+            }]
+        }],
+        "brand": "Western Digital",
+        "images": [
+            "https://product.hstatic.net/200000722513/product/o-cung-ssd-wd-black-sn850x-1tb-m2-pcie-4.0-wds100t2x0e-hinh-6_9fcfa09c0e494107ba661b3a975555e9_grande.png",
+            "https://techspace.vn/wp-content/uploads/2022/12/WD_BLACK_SN850X_NVMe_SSD_2TB_1.jpg",
+            "https://nguyencongpc.vn/media/product/23304-ssd-wd-black-sn850x-1tb-m2-2280-pcie-nvme-gen-4x4-wds100t2x0e.jpg"
+        ],
+        "rating": 5,
+        "numReviews": 2,
+        "numComments": 1,
+        "createdAt": {
+            "$date": "2026-03-29T20:00:00.000Z"
         },
-        "sku": "SNV2S-1000G",
-        "name": "1TB",
+        "updatedAt": {
+            "$date": "2026-03-29T20:00:00.000Z"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "68f100000000000000000092"
+        },
+        "name": "Ổ cứng SSD Kingston NV2 1TB PCIe 4.0",
+        "slug": "kingston-nv2-1tb",
+        "description": "Lựa chọn SSD quốc dân ngon - bổ - rẻ. Dung lượng 1TB thoải mái lưu trữ source code đồ án, phần mềm nặng và cài đặt các tựa game MOBA, FPS phổ biến hiện nay.",
+        "category": {
+            "$oid": "6901d157c092af8bb7fc07a5"
+        },
         "price": 1450000,
-        "stock": 30,
-        "attributes": [
-          {
-            "key": "Dung lượng",
-            "value": "1TB"
-          }
-        ]
-      }
-    ],
-    "brand": "Kingston",
-    "images": [
-      "https://media.kingston.com/kingston/press/ktc-press-fe-nv2-ssd.jpg",
-      "https://cdn.tgdd.vn/Products/Images/8695/293240/o-cung-ssd-m2-pcie-gen4-nvme-1tb-kingston-nv2-thumb-1-600x600.jpg",
-      "https://memoryzone.com.vn/storage/san-pham/ssd/kingston/nv2/ssd-kingston-nv2-1tb-pcie-gen4-x4-nvme-m2-snv2s-1000g.jpg"
-    ],
-    "rating": 4,
-    "numReviews": 5,
-    "numComments": 2,
-    "createdAt": {
-      "$date": "2026-03-29T20:05:00.000Z"
-    },
-    "updatedAt": {
-      "$date": "2026-03-29T20:05:00.000Z"
-    }
-  },
-  {
-    "_id": {
-      "$oid": "68f100000000000000000093"
-    },
-    "name": "Ổ cứng SSD Crucial P3 Plus 500GB",
-    "slug": "crucial-p3-plus-500gb",
-    "description": "Giải pháp nâng cấp tốc độ hoàn hảo với ngân sách sinh viên. Boot Win trong tích tắc, mở Visual Studio hay Docker mượt mà không phải chờ đợi.",
-    "category": {
-      "$oid": "6901d157c092af8bb7fc07a5"
-    },
-    "price": 950000,
-    "variants": [
-      {
-        "_id": {
-          "$oid": "68f110000000000000000093"
+        "variants": [{
+            "_id": {
+                "$oid": "68f110000000000000000092"
+            },
+            "sku": "SNV2S-1000G",
+            "name": "1TB",
+            "price": 1450000,
+            "stock": 30,
+            "attributes": [{
+                "key": "Dung lượng",
+                "value": "1TB"
+            }]
+        }],
+        "brand": "Kingston",
+        "images": [
+            "https://media.kingston.com/kingston/press/ktc-press-fe-nv2-ssd.jpg",
+            "https://cdn.tgdd.vn/Products/Images/8695/293240/o-cung-ssd-m2-pcie-gen4-nvme-1tb-kingston-nv2-thumb-1-600x600.jpg",
+            "https://memoryzone.com.vn/storage/san-pham/ssd/kingston/nv2/ssd-kingston-nv2-1tb-pcie-gen4-x4-nvme-m2-snv2s-1000g.jpg"
+        ],
+        "rating": 4,
+        "numReviews": 5,
+        "numComments": 2,
+        "createdAt": {
+            "$date": "2026-03-29T20:05:00.000Z"
         },
-        "sku": "CT500P3PSSD8",
-        "name": "500GB",
+        "updatedAt": {
+            "$date": "2026-03-29T20:05:00.000Z"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "68f100000000000000000093"
+        },
+        "name": "Ổ cứng SSD Crucial P3 Plus 500GB",
+        "slug": "crucial-p3-plus-500gb",
+        "description": "Giải pháp nâng cấp tốc độ hoàn hảo với ngân sách sinh viên. Boot Win trong tích tắc, mở Visual Studio hay Docker mượt mà không phải chờ đợi.",
+        "category": {
+            "$oid": "6901d157c092af8bb7fc07a5"
+        },
         "price": 950000,
-        "stock": 20,
-        "attributes": [
-          {
-            "key": "Dung lượng",
-            "value": "500GB"
-          }
-        ]
-      }
-    ],
-    "brand": "Crucial",
-    "images": [
-      "https://bizweb.dktcdn.net/100/329/122/products/ssd-crucial-p3-plus-500gb-nvme-3d-nand-m-2-pcie-gen4-x4-ct500p3pssd8-1-a0396efb-4305-436d-a9b1-76c856f60da3-6082ea1b-9e07-486c-9924-504bbb8a0ae4-c768345e-7321-49ec-baa4-7e4728e7b6e0.jpg?v=1689672441197",
-      "https://memoryzone.com.vn/storage/san-pham/ssd/crucial/p3-plus/ssd-crucial-p3-plus-500gb-pcie-gen4-x4-nvme-m2-ct500p3pssd8-3.jpg",
-      "https://xgear.net/wp-content/uploads/2023/12/SSD-Crucial-P3-Plus-1.jpg"
-    ],
-    "rating": 4,
-    "numReviews": 1,
-    "numComments": 0,
-    "createdAt": {
-      "$date": "2026-03-29T20:10:00.000Z"
-    },
-    "updatedAt": {
-      "$date": "2026-03-29T20:10:00.000Z"
-    }
-  },
-  {
-    "_id": {
-      "$oid": "68f100000000000000000094"
-    },
-    "name": "RAM Corsair Vengeance RGB 32GB (2x16GB) DDR5 6000MHz",
-    "slug": "corsair-vengeance-rgb-32gb-ddr5",
-    "description": "Kit RAM DDR5 hiệu năng cao, tích hợp LED RGB đồng bộ tuyệt đẹp. Xử lý đa nhiệm hoàn hảo, bật chục tab Chrome vừa check docs vừa code vẫn không hề hấn gì.",
-    "category": {
-      "$oid": "6901d157c092af8bb7fc07a5"
-    },
-    "price": 3200000,
-    "variants": [
-      {
-        "_id": {
-          "$oid": "68f110000000000000000094"
+        "variants": [{
+            "_id": {
+                "$oid": "68f110000000000000000093"
+            },
+            "sku": "CT500P3PSSD8",
+            "name": "500GB",
+            "price": 950000,
+            "stock": 20,
+            "attributes": [{
+                "key": "Dung lượng",
+                "value": "500GB"
+            }]
+        }],
+        "brand": "Crucial",
+        "images": [
+            "https://bizweb.dktcdn.net/100/329/122/products/ssd-crucial-p3-plus-500gb-nvme-3d-nand-m-2-pcie-gen4-x4-ct500p3pssd8-1-a0396efb-4305-436d-a9b1-76c856f60da3-6082ea1b-9e07-486c-9924-504bbb8a0ae4-c768345e-7321-49ec-baa4-7e4728e7b6e0.jpg?v=1689672441197",
+            "https://bizweb.dktcdn.net/thumb/grande/100/512/769/products/o-cung-ssd-m2-pcie-500gb-crucial-p3-plus-nvme-2280.jpg?v=1716023238577",
+            "https://down-vn.img.susercontent.com/file/sg-11134201-7raup-mak8onxux3s294.webp"
+        ],
+        "rating": 4,
+        "numReviews": 1,
+        "numComments": 0,
+        "createdAt": {
+            "$date": "2026-03-29T20:10:00.000Z"
         },
-        "sku": "CMH32GX5M2B6000C40",
-        "name": "32GB (2x16GB)",
+        "updatedAt": {
+            "$date": "2026-03-29T20:10:00.000Z"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "68f100000000000000000094"
+        },
+        "name": "RAM Corsair Vengeance RGB 32GB (2x16GB) DDR5 6000MHz",
+        "slug": "corsair-vengeance-rgb-32gb-ddr5",
+        "description": "Kit RAM DDR5 hiệu năng cao, tích hợp LED RGB đồng bộ tuyệt đẹp. Xử lý đa nhiệm hoàn hảo, bật chục tab Chrome vừa check docs vừa code vẫn không hề hấn gì.",
+        "category": {
+            "$oid": "6901d157c092af8bb7fc07a5"
+        },
         "price": 3200000,
-        "stock": 15,
-        "attributes": [
-          {
-            "key": "Dung lượng",
-            "value": "32GB"
-          }
-        ]
-      }
-    ],
-    "brand": "Corsair",
-    "images": [
-      "https://bizweb.dktcdn.net/thumb/1024x1024/100/329/122/products/vengeance-rgb-pro-cmw16gx4m2c3600c18-02-631f98d6-9a6c-4066-9b09-294a871e6bc5.jpg?v=1539334156067",
-      "https://nguyencongpc.vn/media/product/23471-corsair-vengeance-rgb-32gb-2x16gb-ddr5-6000mhz-black-1.jpg",
-      "https://cdn.nguyenkimmall.com/images/thumbnails/600/600/detailed/880/10055008-ram-pc-corsair-vengeance-rgb-32gb-6000mhz-ddr5-1.jpg"
-    ],
-    "rating": 5,
-    "numReviews": 3,
-    "numComments": 2,
-    "createdAt": {
-      "$date": "2026-03-29T20:15:00.000Z"
-    },
-    "updatedAt": {
-      "$date": "2026-03-29T20:15:00.000Z"
-    }
-  },
-  {
-    "_id": {
-      "$oid": "68f100000000000000000095"
-    },
-    "name": "RAM Kingston FURY Beast 16GB DDR4 3200MHz",
-    "slug": "kingston-fury-beast-16gb-ddr4",
-    "description": "Thanh RAM quốc dân tản nhiệt nhôm đen nguyên khối cực ngầu. Nâng cấp đơn giản nhưng hiệu quả thấy rõ khi làm việc với các phần mềm nặng.",
-    "category": {
-      "$oid": "6901d157c092af8bb7fc07a5"
-    },
-    "price": 950000,
-    "variants": [
-      {
-        "_id": {
-          "$oid": "68f110000000000000000095"
+        "variants": [{
+            "_id": {
+                "$oid": "68f110000000000000000094"
+            },
+            "sku": "CMH32GX5M2B6000C40",
+            "name": "32GB (2x16GB)",
+            "price": 3200000,
+            "stock": 15,
+            "attributes": [{
+                "key": "Dung lượng",
+                "value": "32GB"
+            }]
+        }],
+        "brand": "Corsair",
+        "images": [
+            "https://bizweb.dktcdn.net/thumb/1024x1024/100/329/122/products/vengeance-rgb-pro-cmw16gx4m2c3600c18-02-631f98d6-9a6c-4066-9b09-294a871e6bc5.jpg?v=1539334156067",
+            "https://nguyencongpc.vn/media/product/23471-corsair-vengeance-rgb-32gb-2x16gb-ddr5-6000mhz-black-1.jpg",
+            "https://cdn.nguyenkimmall.com/images/thumbnails/600/600/detailed/880/10055008-ram-pc-corsair-vengeance-rgb-32gb-6000mhz-ddr5-1.jpg"
+        ],
+        "rating": 5,
+        "numReviews": 3,
+        "numComments": 2,
+        "createdAt": {
+            "$date": "2026-03-29T20:15:00.000Z"
         },
-        "sku": "KF432C16BB1/16",
-        "name": "16GB",
+        "updatedAt": {
+            "$date": "2026-03-29T20:15:00.000Z"
+        }
+    },
+    {
+        "_id": {
+            "$oid": "68f100000000000000000095"
+        },
+        "name": "RAM Kingston FURY Beast 16GB DDR4 3200MHz",
+        "slug": "kingston-fury-beast-16gb-ddr4",
+        "description": "Thanh RAM quốc dân tản nhiệt nhôm đen nguyên khối cực ngầu. Nâng cấp đơn giản nhưng hiệu quả thấy rõ khi làm việc với các phần mềm nặng.",
+        "category": {
+            "$oid": "6901d157c092af8bb7fc07a5"
+        },
         "price": 950000,
-        "stock": 40,
-        "attributes": [
-          {
-            "key": "Dung lượng",
-            "value": "16GB"
-          }
-        ]
-      }
-    ],
-    "brand": "Kingston",
-    "images": [
-      "https://anphat.com.vn/media/product/36952_ktc_product_memory_beast_ddr4_single_1_lg.jpg",
-      "https://cdn.tgdd.vn/Products/Images/8694/281358/ram-desktop-kingston-fury-beast-16gb-ddr4-3200mhz-thumb-600x600.jpg",
-      "https://memoryzone.com.vn/storage/san-pham/ram-pc/kingston/fury-beast-ddr4/ram-pc-kingston-fury-beast-16gb-3200mhz-ddr4-kf432c16bb1-16.jpg"
-    ],
-    "rating": 4,
-    "numReviews": 10,
-    "numComments": 5,
-    "createdAt": {
-      "$date": "2026-03-29T20:20:00.000Z"
-    },
-    "updatedAt": {
-      "$date": "2026-03-29T20:20:00.000Z"
-    }
-  },
-  {
-    "_id": {
-      "$oid": "68f100000000000000000096"
-    },
-    "name": "RAM G.Skill Trident Z5 RGB 64GB (2x32GB) DDR5 6400MHz",
-    "slug": "gskill-trident-z5-64gb-ddr5",
-    "description": "Quái vật dung lượng cho dân chuyên nghiệp. 64GB RAM sẵn sàng cân mọi máy ảo, render video 4K hay những project đồ họa cực nặng mà không sụt giảm hiệu năng.",
-    "category": {
-      "$oid": "6901d157c092af8bb7fc07a5"
-    },
-    "price": 6590000,
-    "variants": [
-      {
-        "_id": {
-          "$oid": "68f110000000000000000096"
+        "variants": [{
+            "_id": {
+                "$oid": "68f110000000000000000095"
+            },
+            "sku": "KF432C16BB1/16",
+            "name": "16GB",
+            "price": 950000,
+            "stock": 40,
+            "attributes": [{
+                "key": "Dung lượng",
+                "value": "16GB"
+            }]
+        }],
+        "brand": "Kingston",
+        "images": [
+            "https://anphat.com.vn/media/product/36952_ktc_product_memory_beast_ddr4_single_1_lg.jpg",
+            "https://cdn.tgdd.vn/Products/Images/8694/281358/ram-desktop-kingston-fury-beast-16gb-ddr4-3200mhz-thumb-600x600.jpg",
+            "https://memoryzone.com.vn/storage/san-pham/ram-pc/kingston/fury-beast-ddr4/ram-pc-kingston-fury-beast-16gb-3200mhz-ddr4-kf432c16bb1-16.jpg"
+        ],
+        "rating": 4,
+        "numReviews": 10,
+        "numComments": 5,
+        "createdAt": {
+            "$date": "2026-03-29T20:20:00.000Z"
         },
-        "sku": "F5-6400J3239G32GX2-TZ5RK",
-        "name": "64GB (2x32GB)",
-        "price": 6590000,
-        "stock": 5,
-        "attributes": [
-          {
-            "key": "Dung lượng",
-            "value": "64GB"
-          }
-        ]
-      }
-    ],
-    "brand": "G.Skill",
-    "images": [
-      "https://www.gskill.com/_upload/images/164179884600.png",
-      "https://nguyencongpc.vn/media/product/23307-ram-gskill-trident-z5-rgb-32gb-2x16gb-ddr5-6000mhz-black-1.jpg",
-      "https://hacom.vn/media/product/64819_ram_desktop_g_skill_trident_z5_rgb_f5_6000j3636f16gx2_tz5rk_32gb_2x16gb_ddr5_6000mhz.jpg"
-    ],
-    "rating": 5,
-    "numReviews": 1,
-    "numComments": 0,
-    "createdAt": {
-      "$date": "2026-03-29T20:25:00.000Z"
+        "updatedAt": {
+            "$date": "2026-03-29T20:20:00.000Z"
+        }
     },
-    "updatedAt": {
-      "$date": "2026-03-29T20:25:00.000Z"
+    {
+        "_id": {
+            "$oid": "68f100000000000000000096"
+        },
+        "name": "RAM G.Skill Trident Z5 RGB 64GB (2x32GB) DDR5 6400MHz",
+        "slug": "gskill-trident-z5-64gb-ddr5",
+        "description": "Quái vật dung lượng cho dân chuyên nghiệp. 64GB RAM sẵn sàng cân mọi máy ảo, render video 4K hay những project đồ họa cực nặng mà không sụt giảm hiệu năng.",
+        "category": {
+            "$oid": "6901d157c092af8bb7fc07a5"
+        },
+        "price": 6590000,
+        "variants": [{
+            "_id": {
+                "$oid": "68f110000000000000000096"
+            },
+            "sku": "F5-6400J3239G32GX2-TZ5RK",
+            "name": "64GB (2x32GB)",
+            "price": 6590000,
+            "stock": 5,
+            "attributes": [{
+                "key": "Dung lượng",
+                "value": "64GB"
+            }]
+        }],
+        "brand": "G.Skill",
+        "images": [
+            "https://www.gskill.com/_upload/images/164179884600.png",
+            "https://nguyencongpc.vn/media/product/23307-ram-gskill-trident-z5-rgb-32gb-2x16gb-ddr5-6000mhz-black-1.jpg",
+            "https://hacom.vn/media/product/64819_ram_desktop_g_skill_trident_z5_rgb_f5_6000j3636f16gx2_tz5rk_32gb_2x16gb_ddr5_6000mhz.jpg"
+        ],
+        "rating": 5,
+        "numReviews": 1,
+        "numComments": 0,
+        "createdAt": {
+            "$date": "2026-03-29T20:25:00.000Z"
+        },
+        "updatedAt": {
+            "$date": "2026-03-29T20:25:00.000Z"
+        }
     }
-  }
 ]

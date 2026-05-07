@@ -2,7 +2,7 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 const Product = require("../models/Product");
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
-exports.chatWithAI = async (req, res) => {
+exports.chatWithAI = async(req, res) => {
     try {
         const { message, history } = req.body;
         const systemPrompt = `Bạn là Trợ lý AI xuất sắc của cửa hàng "Computer Store", chuyên tư vấn máy tính, laptop và linh kiện.
@@ -60,15 +60,15 @@ exports.chatWithAI = async (req, res) => {
         const result = await model.generateContent(`${systemPrompt}\n\nKhách hàng: "${message}"`);
         const aiResponse = result.response.text();
 
-       try {
+        try {
             const cleanJson = aiResponse.replace(/```json/g, "").replace(/```/g, "").trim();
             const aiData = JSON.parse(cleanJson);
 
             // 1. NHÓM GIAO TIẾP & TÓM TẮT
             if (aiData.action === "CHAT" || aiData.action === "SUMMARIZE") {
-                return res.status(200).json({ 
-                    type: "text", 
-                    message: aiData.message 
+                return res.status(200).json({
+                    type: "text",
+                    message: aiData.message
                 });
             }
 
@@ -83,9 +83,9 @@ exports.chatWithAI = async (req, res) => {
                 return res.status(200).json({ type: "close_list" });
             }
             if (aiData.action === "VIEW_DETAIL") {
-                return res.status(200).json({ 
-                    type: "view_detail", 
-                    index: aiData.index 
+                return res.status(200).json({
+                    type: "view_detail",
+                    index: aiData.index
                 });
             }
 
@@ -106,15 +106,14 @@ exports.chatWithAI = async (req, res) => {
                 let productToAdd = null;
                 if (aiData.productName) {
                     productToAdd = await Product.findOne({ name: new RegExp(aiData.productName, 'i') });
-                } 
-                else if (aiData.targetPrice) {
+                } else if (aiData.targetPrice) {
                     const target = Number(aiData.targetPrice);
                     const products = await Product.find({
                         price: { $gte: target - 6000000, $lte: target + 6000000 }
                     });
-                    
+
                     if (products.length > 0) {
-                        productToAdd = products.reduce((prev, curr) => 
+                        productToAdd = products.reduce((prev, curr) =>
                             Math.abs(curr.price - target) < Math.abs(prev.price - target) ? curr : prev
                         );
                     }
@@ -137,12 +136,12 @@ exports.chatWithAI = async (req, res) => {
             // NẰM TRONG NHÓM CHỐT ĐƠN & THANH TOÁN (cùng chỗ với ADD_TO_CART)
             if (aiData.action === "ADD_CURRENT_TO_CART") {
                 const currentPath = req.body.currentPath || ""; // Lấy URL Frontend gửi lên
-                
+
                 // Nếu khách thực sự đang ở trang chi tiết sản phẩm (có chữ /product/)
                 if (currentPath.includes("/product/")) {
                     // Lấy đoạn cuối của URL (chính là ID hoặc Slug của sản phẩm)
-                    const slugOrId = currentPath.split("/").pop(); 
-                    
+                    const slugOrId = currentPath.split("/").pop();
+
                     // Tìm sản phẩm trong Database
                     let query = { slug: slugOrId };
                     // Nếu đường dẫn là _id (24 ký tự) thì đổi query
@@ -172,12 +171,11 @@ exports.chatWithAI = async (req, res) => {
             // 4. NHÓM TÌM KIẾM (isReady)
             if (aiData.isReady) {
                 let products = [];
-                let query = {}; 
+                let query = {};
 
                 if (aiData.keywords && aiData.keywords.includes("BEST_SELLER")) {
-                     products = await Product.find({}).limit(5);
-                } 
-                else {
+                    products = await Product.find({}).limit(5);
+                } else {
                     if (aiData.keywords && aiData.keywords.length > 0) {
                         const searchQueries = aiData.keywords.map(kw => new RegExp(kw, 'i'));
                         query.$or = [
@@ -188,19 +186,19 @@ exports.chatWithAI = async (req, res) => {
                     if (aiData.targetPrice) {
                         const target = Number(aiData.targetPrice);
                         query.price = {
-                            $gte: target - 5000000, 
-                            $lte: target + 5000000  
+                            $gte: target - 5000000,
+                            $lte: target + 5000000
                         };
                     }
                     products = await Product.find(query).limit(5);
-                } 
+                }
 
                 return res.status(200).json({
                     type: "form",
-                    message: products.length > 0 
-                        ? "Dạ, em tìm được các mẫu này, bạn xem bảng bên trái nhé. Bạn muốn mua mẫu số mấy ạ?"
-                        : "Dạ hiện tại trong tầm giá này hệ thống chưa tìm thấy mẫu khớp chính xác. Bạn tham khảo mức giá khác nhé!",
-                    products: products 
+                    message: products.length > 0 ?
+                        "Dạ, em tìm được các mẫu này, bạn xem bảng bên trái nhé. Bạn muốn mua mẫu số mấy ạ?" :
+                        "Dạ hiện tại trong tầm giá này hệ thống chưa tìm thấy mẫu khớp chính xác. Bạn tham khảo mức giá khác nhé!",
+                    products: products
                 });
             }
 
@@ -215,19 +213,218 @@ exports.chatWithAI = async (req, res) => {
         } catch (error) {
             console.error("Lỗi AI không trả về chuẩn JSON:", error);
             // TRƯỜNG HỢP AI TRẢ VỀ TEXT BÌNH THƯỜNG (KHÔNG PHẢI JSON)
-            return res.status(500).json({ 
-                type: "text", 
-                message: "Dạ em bị lú một chút, bạn nói lại giúp em nhé!" 
+            return res.status(500).json({
+                type: "text",
+                message: "Dạ em bị lú một chút, bạn nói lại giúp em nhé!"
             });
         }
     } catch (error) {
         console.error("Lỗi API AI hoặc hết Token:", error.message);
-        const backupProducts = await Product.find({}).limit(3); 
+        const backupProducts = await Product.find({}).limit(3);
 
         return res.status(200).json({
             type: "form",
             message: "Dạ, hiện tại tư vấn viên AI đang hỗ trợ hơi đông khách. Hệ thống xin phép gợi ý cho bạn 3 mẫu sản phẩm Đang Bán Chạy Nhất cửa hàng nhé:",
-            products: backupProducts 
+            products: backupProducts
         });
     }
 };
+
+
+// const { GoogleGenerativeAI } = require("@google/generative-ai");
+// const Product = require("../models/Product");
+// const Order = require("../models/Order");
+// const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
+
+// // --- CÁC HÀM XỬ LÝ LOGIC (HELPER FUNCTIONS) ---
+
+// const handleStatRevenue = async(timeFrame) => {
+//     try {
+//         let startDate = new Date();
+//         if (timeFrame === "month") {
+//             startDate.setMonth(startDate.getMonth() - 1);
+//         } else if (timeFrame === "day") {
+//             startDate.setHours(0, 0, 0, 0);
+//         } else {
+//             startDate.setDate(startDate.getDate() - 7);
+//         }
+
+//         // Sửa status từ 'completed' thành 'delivered' cho đúng Schema của bạn
+//         const orders = await Order.find({
+//             createdAt: { $gte: startDate },
+//             status: "delivered"
+//         }).lean();
+
+//         // Sửa totalAmount thành totalPrice cho đúng Schema của bạn
+//         const totalRevenue = orders.reduce((sum, order) => {
+//             const amount = order.totalPrice || 0; // Đổi tên trường ở đây
+//             return sum + amount;
+//         }, 0);
+
+//         return {
+//             type: "admin_chart",
+//             message: `Báo cáo doanh thu các đơn đã giao ${timeFrame === "month" ? "30 ngày qua" : (timeFrame === "day" ? "hôm nay" : "7 ngày qua")}:`,
+//             data: {
+//                 totalRevenue,
+//                 orderCount: orders.length,
+//                 currency: "VND",
+//                 averageOrderValue: orders.length > 0 ? Math.round(totalRevenue / orders.length) : 0
+//             }
+//         };
+//     } catch (error) {
+//         console.error("❌ Lỗi tại handleStatRevenue:", error.message);
+//         return { type: "text", message: "Có lỗi khi truy xuất doanh thu." };
+//     }
+// };
+
+// const handlePredictTrend = async() => {
+//     // Logic thực tế: Có thể phân tích các sản phẩm bán chạy để đưa ra nhận định
+//     return {
+//         type: "admin_predict",
+//         message: "Dựa trên dữ liệu bán hàng, phân khúc Laptop Văn phòng đang tăng trưởng mạnh. Dự báo tháng tới nhu cầu Dell XPS và MacBook sẽ tăng 20%.",
+//         suggestion: "Kế hoạch: Nhập thêm hàng và chạy chương trình khuyến mãi cho sinh viên."
+//     };
+// };
+
+// const handleTopSellingProducts = async() => {
+//     const topProducts = await Product.find().sort({ soldCount: -1 }).limit(5);
+//     return {
+//         type: "admin_table",
+//         message: "Top 5 sản phẩm bán chạy nhất hệ thống:",
+//         products: topProducts
+//     };
+// };
+
+// const handleAddToCart = async(aiData) => {
+//     try {
+//         let productToAdd = null;
+//         if (aiData.productName) {
+//             // Sử dụng regex để tìm kiếm tương đối và không phân biệt hoa thường
+//             productToAdd = await Product.findOne({ name: new RegExp(aiData.productName, 'i') });
+//         } else if (aiData.targetPrice) {
+//             const target = Number(aiData.targetPrice);
+//             const products = await Product.find({
+//                 price: { $gte: target - 3000000, $lte: target + 3000000 }
+//             }).limit(10); // Thu hẹp phạm vi giá để chính xác hơn
+
+//             if (products.length > 0) {
+//                 productToAdd = products.reduce((prev, curr) =>
+//                     Math.abs(curr.price - target) < Math.abs(prev.price - target) ? curr : prev
+//                 );
+//             }
+//         }
+
+//         if (productToAdd) {
+//             return { type: "cart_success", message: `Đã thêm **${productToAdd.name}** vào giỏ hàng!`, product: productToAdd };
+//         }
+//         return { type: "text", message: "Em chưa tìm thấy đúng máy đó để thêm vào giỏ. Bạn viết rõ tên máy hơn nhé!" };
+//     } catch (error) {
+//         return { type: "text", message: "Lỗi khi xử lý giỏ hàng." };
+//     }
+// };
+
+// // --- XỬ LÝ PHẢN HỒI JSON TỪ AI ---
+// const processAIResponse = async(aiData, req) => {
+//     // 1. Kiểm tra Admin Action (Kết hợp kiểm tra Role thực tế nếu có Middleware)
+//     const isAdmin = req.body.role === 'admin';
+
+//     if (isAdmin && aiData.adminAction) {
+//         switch (aiData.adminAction) {
+//             case "STAT_REVENUE":
+//                 return await handleStatRevenue(aiData.timeFrame);
+//             case "PREDICT_TREND":
+//                 return await handlePredictTrend();
+//             case "TOP_SELLING_PRODUCTS":
+//                 return await handleTopSellingProducts();
+//         }
+//     }
+
+//     // 2. Xử lý User Action
+//     if (aiData.action) {
+//         switch (aiData.action) {
+//             case "CHAT":
+//             case "SUMMARIZE":
+//                 return { type: "text", message: aiData.message };
+//             case "ADD_TO_CART":
+//                 return await handleAddToCart(aiData);
+//             case "CHECKOUT":
+//                 return { type: "checkout", message: "Đang chuyển hướng bạn đến trang thanh toán..." };
+//         }
+//     }
+
+//     // 3. Xử lý Tìm kiếm (Sửa logic query mượt hơn)
+//     if (aiData.isReady) {
+//         let query = {};
+//         if (aiData.keywords && aiData.keywords.length > 0) {
+//             // Tìm kiếm tất cả keywords xuất hiện trong tên
+//             const regex = aiData.keywords.join('|');
+//             query.name = { $regex: regex, $options: 'i' };
+//         }
+//         if (aiData.targetPrice) {
+//             query.price = { $gte: aiData.targetPrice - 5000000, $lte: aiData.targetPrice + 5000000 };
+//         }
+//         const products = await Product.find(query).limit(5).lean();
+//         return {
+//             type: "form",
+//             message: products.length > 0 ? "Gợi ý các máy phù hợp nhất cho bạn:" : "Hiện tại em chưa thấy máy nào đúng yêu cầu này.",
+//             products
+//         };
+//     }
+
+//     return { type: "text", message: aiData.message || "Em có thể giúp gì thêm cho bạn không?" };
+// };
+
+// // --- HÀM CHÍNH ---
+// exports.chatWithAI = async(req, res) => {
+//     try {
+//         const { message, history, role } = req.body;
+
+//         const instructionPrompt = `Bạn là Trợ lý AI của "Computer Store". Trả về JSON DUY NHẤT. 
+//         TUYỆT ĐỐI KHÔNG giải thích thêm.
+
+//         NẾU ROLE="user":
+//         - Tìm kiếm: {"isReady": true, "keywords": ["tên máy"], "targetPrice": số}
+//         - Thêm giỏ hàng: {"action": "ADD_TO_CART", "productName": "tên"}
+//         - Thanh toán: {"action": "CHECKOUT"}
+//         - Chat/Tóm tắt: {"action": "CHAT", "message": "nội dung"}
+
+//         NẾU ROLE="admin":
+//         - Thống kê doanh thu: {"adminAction": "STAT_REVENUE", "timeFrame": "day" hoặc "month"}
+//         - Dự báo: {"adminAction": "PREDICT_TREND"}
+//         - Xem top bán chạy: {"adminAction": "TOP_SELLING_PRODUCTS"}`;
+
+//         const roleContext = role === "admin" ? "BẠN ĐANG TRẢ LỜI ADMIN." : "BẠN ĐANG TRẢ LỜI USER.";
+
+//         const model = genAI.getGenerativeModel({
+//             model: "gemini-1.5-flash",
+//             generationConfig: { responseMimeType: "application/json" } // Ép AI trả JSON chuẩn
+//         });
+
+//         const finalPrompt = `${instructionPrompt}\n\n${roleContext}\nLịch sử: ${history}\nCâu hỏi: "${message}"`;
+
+//         const result = await model.generateContent(finalPrompt);
+//         const aiResponse = result.response.text();
+
+//         try {
+//             // Loại bỏ các ký tự Markdown nếu AI lỡ tay thêm vào
+//             const cleanJson = aiResponse.replace(/```json/g, "").replace(/```/g, "").trim();
+//             const aiData = JSON.parse(cleanJson);
+
+//             const response = await processAIResponse(aiData, req);
+//             return res.status(200).json(response);
+
+//         } catch (parseError) {
+//             // Fallback nếu AI trả về text thuần thay vì JSON
+//             return res.status(200).json({ type: "text", message: aiResponse });
+//         }
+
+//     } catch (error) {
+//         // Thêm dòng này để nhìn thấy lỗi thật sự ở Terminal Node.js
+//         console.error("🔥 ERROR DETAIL:", error);
+
+//         return res.status(500).json({
+//             type: "text",
+//             message: "Hệ thống bận, lỗi: " + error.message
+//         });
+//     }
+// };
