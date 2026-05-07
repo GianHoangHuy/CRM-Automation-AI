@@ -644,12 +644,12 @@ const dashboardBasic = async(req, res) => {
         // Format response
         const response = {
             users: {
-                total: userStats[0].total[0].count || 0,
-                newThisMonth: userStats[0].newUsers[0].count || 0,
+                total: userStats[0].total[0]?.count || 0,
+                newThisMonth: userStats[0].newUsers[0]?.count || 0,
                 growthChart: userStats[0].userGrowth.reverse()
             },
             orders: {
-                total: orderStats[0].total[0].count || 0,
+                total: orderStats[0].total[0]?.count || 0,
                 byStatus: orderStats[0].byStatus.reduce((acc, curr) => {
                     acc[curr._id] = curr.count;
                     return acc;
@@ -663,7 +663,7 @@ const dashboardBasic = async(req, res) => {
                 thisMonth: revenueByMonth.find(m =>
                     m._id.year === now.getFullYear() &&
                     m._id.month === (now.getMonth() + 1)
-                ).revenue || 0
+                )?.revenue || 0
             }
         };
 
