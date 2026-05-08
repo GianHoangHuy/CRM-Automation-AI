@@ -18,7 +18,7 @@ const Header = () => {
       localStorage.removeItem("token");
       localStorage.removeItem("userInfo");
       toast.info("Đã đăng xuất thành công");
-      navigate("/"); 
+      window.location.href = '/'; 
     }
   };
 

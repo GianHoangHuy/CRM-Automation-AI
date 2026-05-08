@@ -6,16 +6,22 @@ import { useNavigate } from 'react-router-dom';
 
 const Chatbot = () => {
     const navigate = useNavigate();
-    // 1. KIỂM TRA ĐĂNG NHẬP TỪ SESSION (Tắt trình duyệt là mất đăng nhập)
-    const token = sessionStorage.getItem('token'); // Đổi tên 'token' cho khớp với web bạn nhé
+    // 1. KIỂM TRA ĐĂNG NHẬP VÀ LẤY THÔNG TIN
+    const token = sessionStorage.getItem('token') || localStorage.getItem('token'); 
     const isLoggedIn = !!token;
 
-    // Lấy thông tin user để biết ID của họ là gì (Đổi 'user' cho khớp với key của bạn)
-    const currentUser = JSON.parse(sessionStorage.getItem('user') || '{}');
+    // SỬA Ở ĐÂY: Thay 'user' thành 'userInfo'
+    const userString = sessionStorage.getItem('userInfo') || localStorage.getItem('userInfo') || '{}';
+    const currentUser = JSON.parse(userString);
+    
+    // Bây giờ nó sẽ lấy được ID thật của Admin thay vì chữ 'guest'
     const userId = currentUser._id || currentUser.id || 'guest'; 
+    
+    // Kiểm tra quyền Admin
+    const isUserAdmin = currentUser.isAdmin === true; 
+    const userRole = isUserAdmin ? 'admin' : 'user';
 
     // 2. TẠO CHÌA KHÓA LƯU TRỮ RIÊNG CHO TỪNG TÀI KHOẢN
-    // Vd: Đăng nhập thì key là 'chatMessages_abc123', chưa đăng nhập thì 'chatMessages_guest'
     const chatKey = `chatMessages_${userId}`;
     const productKey = `chatProducts_${userId}`;
     const openKey = `chatIsOpen_${userId}`;
@@ -23,10 +29,13 @@ const Chatbot = () => {
 
     // 3. KHỞI TẠO STATE
     const [messages, setMessages] = useState(() => {
-        // Đã đăng nhập thì moi từ Local (Trí nhớ dài hạn). Chưa thì moi từ Session (Ngắn hạn)
         const storage = isLoggedIn ? localStorage : sessionStorage;
         const saved = storage.getItem(chatKey);
-        return saved ? JSON.parse(saved) : [{ sender: 'ai', type: 'text', text: 'Xin chào! Mình là trợ lý AI. Bạn đang tìm dòng sản phẩm nào?' }];
+        // Đổi câu chào một chút nếu là Admin
+        const defaultGreeting = userRole === 'admin' 
+            ? 'Xin chào Quản trị viên! Anh/chị cần xem thống kê doanh thu hay top bán chạy hôm nay không?'
+            : 'Xin chào! Mình là trợ lý AI. Bạn đang tìm dòng sản phẩm nào?';
+        return saved ? JSON.parse(saved) : [{ sender: 'ai', type: 'text', text: defaultGreeting }];
     });
     
     const [suggestedProducts, setSuggestedProducts] = useState(() => {
@@ -50,7 +59,7 @@ const Chatbot = () => {
     const [input, setInput] = useState('');
     const [loading, setLoading] = useState(false);
 
-    // XÓA DANH SÁCH KHI VÀO TRANG GIỎ HÀNG
+    // 1. XÓA DANH SÁCH KHI VÀO TRANG GIỎ HÀNG (Giữ nguyên của bạn)
     useEffect(() => {
         if (window.location.pathname.includes('/cart')) {
             setSuggestedProducts([]);
@@ -59,7 +68,38 @@ const Chatbot = () => {
         }
     }, [isLoggedIn, productKey]);
 
-    // LƯU LẠI MỖI KHI CÓ THAY ĐỔI VÀO ĐÚNG KHO LƯU TRỮ CỦA TÀI KHOẢN ĐÓ
+    // ==============================================================
+    // 2. THÊM MỚI: LẮNG NGHE SỰ KIỆN ĐĂNG XUẤT HOẶC ĐỔI TÀI KHOẢN
+    // ==============================================================
+    useEffect(() => {
+        const storage = isLoggedIn ? localStorage : sessionStorage;
+        
+        const savedMessages = storage.getItem(chatKey);
+        const savedProducts = storage.getItem(productKey);
+        const savedOpen = storage.getItem(openKey);
+        const savedCollapse = storage.getItem(collapseKey);
+        
+        const defaultGreeting = userRole === 'admin' 
+            ? 'Xin chào Quản trị viên! Anh/chị cần xem thống kê doanh thu hay top bán chạy hôm nay không?'
+            : 'Xin chào! Mình là trợ lý AI. Bạn đang tìm dòng sản phẩm nào?';
+
+        // Cập nhật lại giao diện Chatbot ngay khi tài khoản thay đổi
+        setMessages(savedMessages ? JSON.parse(savedMessages) : [{ sender: 'ai', type: 'text', text: defaultGreeting }]);
+        setSuggestedProducts(savedProducts ? JSON.parse(savedProducts) : []);
+        setIsOpen(savedOpen === 'true');
+        setIsListCollapsed(savedCollapse === 'true');
+
+        // Ép dọn dẹp sạch sẽ nếu phát hiện người dùng vừa Đăng xuất (Thành guest)
+        if (!isLoggedIn) {
+            setSuggestedProducts([]);
+            setIsOpen(false);
+            setIsListCollapsed(false);
+        }
+    }, [userId, isLoggedIn, chatKey, productKey, openKey, collapseKey, userRole]); 
+
+    // ==============================================================
+    // 3. LƯU LẠI MỖI KHI CÓ THAY ĐỔI (Giữ nguyên của bạn)
+    // ==============================================================
     useEffect(() => { 
         const storage = isLoggedIn ? localStorage : sessionStorage;
         storage.setItem(chatKey, JSON.stringify(messages)); 
@@ -79,7 +119,7 @@ const Chatbot = () => {
         const storage = isLoggedIn ? localStorage : sessionStorage;
         storage.setItem(collapseKey, isListCollapsed); 
     }, [isListCollapsed, isLoggedIn, collapseKey]);
-
+    
     const sendMessage = async () => {
         if (!input.trim()) return;
 
@@ -93,11 +133,25 @@ const Chatbot = () => {
             const response = await axios.post('http://localhost:5000/api/chat', { 
                 message: input, 
                 history: chatHistory,
-                currentPath: window.location.pathname
+                currentPath: window.location.pathname,
+                role: userRole // GỬI ROLE LÊN BACKEND ĐỂ NHẬN DIỆN ADMIN
             });
             const data = response.data;
             let finalAiMessage = data.message;
 
+            // ==========================================
+            // XỬ LÝ DỮ LIỆU ĐẶC THÙ CHO ADMIN
+            // ==========================================
+            if (data.type === 'admin_chart' && data.data) {
+                finalAiMessage = `${data.message}\n💰 Tổng doanh thu: **${data.data.totalRevenue.toLocaleString('vi-VN')}đ**\n📦 Số đơn thành công: **${data.data.orderCount}**`;
+            }
+            if (data.type === 'admin_predict') {
+                finalAiMessage = `💡 **Dự báo**: ${data.message}\n🚀 **Đề xuất**: ${data.suggestion}`;
+            }
+
+            // ==========================================
+            // XỬ LÝ LOGIC UI & GIỎ HÀNG (DÀNH CHO USER VÀ ADMIN NẾU CẦN)
+            // ==========================================
             if (data.type === 'form' && data.products) {
                 setSuggestedProducts(data.products);
                 setIsListCollapsed(false); 
@@ -123,16 +177,9 @@ const Chatbot = () => {
                 
                 if (targetP) {
                     finalAiMessage = `Dạ, em đang mở trang chi tiết sản phẩm số ${data.index}...`;
-                    
-                    // Ưu tiên dùng slug, nếu database không có slug thì tự động rớt về _id
                     const productPath = targetP.slug ? `/product/${targetP.slug}` : `/product/${targetP._id}`;
-                    
-                    // Dùng navigate để chuyển trang mượt mà không reload web
-                    setTimeout(() => { 
-                        navigate(productPath); 
-                    }, 1000);
+                    setTimeout(() => { navigate(productPath); }, 1000);
                 } else {
-                    // Nếu khách chọn số không có thật trong bảng
                     finalAiMessage = `Dạ em tìm không thấy sản phẩm số ${data.index} trong danh sách hiện tại. Bạn xem lại số trên bảng giúp em nhé!`;
                 }
             }
@@ -188,7 +235,7 @@ const Chatbot = () => {
                 }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '0 0 20px 0', borderBottom: '2px solid #0084ff', paddingBottom: '10px' }}>
                         <h4 style={{ margin: 0, fontSize: '20px', color: '#333', display: isListCollapsed ? 'none' : 'block' }}>
-                            📋 Sản phẩm đề xuất
+                            📋 Kết quả từ AI
                         </h4>
                         
                         <button 
@@ -237,17 +284,20 @@ const Chatbot = () => {
                         boxShadow: '0 10px 25px rgba(0,0,0,0.15)', marginBottom: '15px', fontFamily: 'sans-serif'
                     }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderBottom: '1px solid #eee', paddingBottom: '10px', marginBottom: '10px' }}>
-                            <h3 style={{ margin: 0, fontSize: '18px', color: '#333' }}>🤖 Trợ lý AI</h3>
+                            <h3 style={{ margin: 0, fontSize: '18px', color: '#333' }}>
+                                🤖 Trợ lý AI {isUserAdmin ? '(Quản trị)' : ''}
+                            </h3>
                             <button onClick={() => setIsOpen(false)} style={{ background: 'none', border: 'none', fontSize: '18px', cursor: 'pointer', color: '#888' }}>✖</button>
                         </div>
-                        <div style={{ height: '350px', overflowY: 'auto', marginBottom: '15px' }}>
+                        <div style={{ height: '350px', overflowY: 'auto', marginBottom: '15px', whiteSpace: 'pre-line' }}>
                             {messages.map((msg, index) => (
                                 <div key={index} style={{ textAlign: msg.sender === 'user' ? 'right' : 'left', margin: '12px 0' }}>
                                     <div style={{
                                         display: 'inline-block', padding: '10px 15px', maxWidth: '80%', background: msg.sender === 'user' ? '#0084ff' : '#f1f0f0',
                                         color: msg.sender === 'user' ? '#fff' : '#333', borderRadius: '15px', textAlign: 'left', fontSize: '14px', lineHeight: '1.4'
                                     }}>
-                                        {msg.text}
+                                        {/* Sử dụng dangerouslySetInnerHTML để render các thẻ in đậm Markdown do AI trả về */}
+                                        <span dangerouslySetInnerHTML={{__html: msg.text.replace(/\*\*(.*?)\*\*/g, '<b>$1</b>')}}></span>
                                     </div>
                                 </div>
                             ))}
@@ -275,257 +325,3 @@ const Chatbot = () => {
 };
 
 export default Chatbot;
-
-
-// import React, { useState, useEffect, Fragment, useRef } from 'react';
-// import axios from 'axios';
-// import { OrderAPI } from '../../services/api';
-// import { toast } from 'react-toastify';
-// import { useNavigate } from 'react-router-dom';
-
-// const Chatbot = () => {
-//     const navigate = useNavigate();
-//     const scrollRef = useRef(null);
-
-//     // 1. QUẢN LÝ THÔNG TIN ĐĂNG NHẬP
-//     const [currentUser, setCurrentUser] = useState(() => JSON.parse(sessionStorage.getItem('user') || '{}'));
-//     const isLoggedIn = !!sessionStorage.getItem('token');
-//     const userId = currentUser._id || currentUser.id || 'guest';
-//     const userRole = currentUser.role || 'user';
-
-//     // Chìa khóa lưu trữ
-//     const chatKey = `chatMessages_${userId}`;
-//     const productKey = `chatProducts_${userId}`;
-//     const openKey = `chatIsOpen_${userId}`;
-//     const collapseKey = `chatListCollapsed_${userId}`;
-
-//     // 2. KHỞI TẠO STATE
-//     const [messages, setMessages] = useState(() => {
-//         const storage = isLoggedIn ? localStorage : sessionStorage;
-//         const saved = storage.getItem(chatKey);
-//         return saved ? JSON.parse(saved) : [{ 
-//             sender: 'ai', 
-//             type: 'text', 
-//             text: `Xin chào ${userRole === 'admin' ? 'Quản trị viên' : ''}! Tôi có thể giúp gì cho bạn?` 
-//         }];
-//     });
-    
-//     const [suggestedProducts, setSuggestedProducts] = useState(() => {
-//         const storage = isLoggedIn ? localStorage : sessionStorage;
-//         const saved = storage.getItem(productKey);
-//         return saved ? JSON.parse(saved) : [];
-//     });
-
-//     const [isOpen, setIsOpen] = useState(() => {
-//         const storage = isLoggedIn ? localStorage : sessionStorage;
-//         return storage.getItem(openKey) === 'true';
-//     });
-    
-//     const [isListCollapsed, setIsListCollapsed] = useState(() => {
-//         const storage = isLoggedIn ? localStorage : sessionStorage;
-//         return storage.getItem(collapseKey) === 'true';
-//     });
-
-//     const [input, setInput] = useState('');
-//     const [loading, setLoading] = useState(false);
-
-//     // Cập nhật User khi có thay đổi ở Session (Tránh lỗi kẹt role Admin)
-//     useEffect(() => {
-//         const handleStorageChange = () => {
-//             setCurrentUser(JSON.parse(sessionStorage.getItem('user') || '{}'));
-//         };
-//         window.addEventListener('storage', handleStorageChange);
-//         return () => window.removeEventListener('storage', handleStorageChange);
-//     }, []);
-
-//     // Tự động cuộn xuống
-//     useEffect(() => {
-//         if (scrollRef.current) scrollRef.current.scrollTop = scrollRef.current.scrollHeight;
-//     }, [messages]);
-
-//     // Lưu trữ dữ liệu
-//     useEffect(() => { 
-//         const storage = isLoggedIn ? localStorage : sessionStorage;
-//         storage.setItem(chatKey, JSON.stringify(messages)); 
-//         storage.setItem(productKey, JSON.stringify(suggestedProducts));
-//         storage.setItem(openKey, isOpen);
-//         storage.setItem(collapseKey, isListCollapsed);
-//     }, [messages, suggestedProducts, isOpen, isListCollapsed, isLoggedIn, chatKey, productKey, openKey, collapseKey]);
-
-//     // 3. HÀM GỬI TIN NHẮN
-//     const sendMessage = async () => {
-//         if (!input.trim() || loading) return;
-    
-//         // 1. Lấy thông tin Role và Path hiện tại
-//         const sessionUser = JSON.parse(sessionStorage.getItem('user') || '{}');
-//         const currentRole = sessionUser.role || 'user';
-//         const currentPath = window.location.pathname;
-    
-//         // 2. Cập nhật giao diện tin nhắn của User ngay lập tức
-//         const userMsg = { sender: 'user', type: 'text', text: input };
-//         const chatHistorySnapshot = messages; // Lưu lại để dùng cho history
-        
-//         setMessages(prev => [...prev, userMsg]);
-//         const currentInput = input; // Lưu lại input để gửi API
-//         setInput('');
-//         setLoading(true);
-    
-//         try {
-//             // 3. Tạo lịch sử hội thoại an toàn (lấy 5 câu gần nhất)
-//             const chatHistory = chatHistorySnapshot && chatHistorySnapshot.length > 0 
-//                 ? chatHistorySnapshot.slice(-5).map(m => `${m.sender === 'user' ? 'Khách' : 'AI'}: ${m.text}`).join('\n')
-//                 : "";
-    
-//             // 4. Gọi API Backend
-//             const response = await axios.post('http://localhost:5000/api/chat', { 
-//                 message: currentInput, 
-//                 history: chatHistory,
-//                 role: currentRole,
-//                 currentPath: currentPath
-//             });
-    
-//             const data = response.data;
-//             if (!data) throw new Error("Server trả về dữ liệu trống");
-    
-//             let aiText = data.message || "";
-    
-//             // 5. Xử lý các Action đặc biệt dựa trên Type từ AI trả về
-//             switch (data.type) {
-//                 case 'admin_chart':
-//                     if (data.data) {
-//                         const revenue = data.data.totalRevenue ? data.data.totalRevenue.toLocaleString() : "0";
-//                         aiText = `${data.message}\n💰 Tổng doanh thu: ${revenue}đ\n📦 Số đơn hàng: ${data.data.orderCount || 0}`;
-//                     }
-//                     break;
-    
-//                 case 'admin_predict':
-//                     aiText = `💡 **Dự báo**: ${data.message}\n🚀 **Gợi ý**: ${data.suggestion || "N/A"}`;
-//                     break;
-    
-//                 case 'form':
-//                     if (data.products) {
-//                         setSuggestedProducts(data.products);
-//                         setIsListCollapsed(false);
-//                     }
-//                     break;
-    
-//                 case 'cart_success':
-//                     if (data.product) {
-//                         const variantId = data.product.variants?.[0]?._id;
-//                         await OrderAPI.addToCart({ productId: data.product._id, variantId, quantity: 1 });
-//                         toast.success(`Đã thêm ${data.product.name} vào giỏ!`);
-//                     }
-//                     break;
-    
-//                 default:
-//                     // Các trường hợp text bình thường không cần xử lý thêm
-//                     break;
-//             }
-    
-//             // 6. Cập nhật tin nhắn của AI vào giao diện
-//             setMessages(prev => [...prev, { sender: 'ai', type: data.type, text: aiText }]);
-    
-//         } catch (error) {
-//             console.error("🚀 Chat Error:", error);
-            
-//             let errorMsg = 'Kết nối máy chủ thất bại!';
-//             if (error.response?.status === 500) {
-//                 errorMsg = 'Lỗi máy chủ (500). Bạn hãy kiểm tra terminal Backend để biết chi tiết lỗi (thường là lỗi Model hoặc Database).';
-//             }
-    
-//             setMessages(prev => [...prev, { sender: 'ai', type: 'text', text: errorMsg }]);
-//         } finally {
-//             setLoading(false);
-//         }
-//     };
-
-//     return (
-//         <Fragment>
-//             {/* BẢNG SẢN PHẨM BÊN TRÁI */}
-//             {isOpen && suggestedProducts.length > 0 && (
-//                 <div style={{ 
-//                     position: 'fixed', top: '80px', bottom: '40px', left: '40px', 
-//                     overflowY: 'auto', background: '#fff', borderRadius: '15px', 
-//                     border: '1px solid #e0e0e0', zIndex: 99998,
-//                     transition: 'all 0.3s ease',
-//                     width: isListCollapsed ? '50px' : '480px',
-//                     padding: isListCollapsed ? '10px 5px' : '20px',
-//                     boxShadow: '0 10px 40px rgba(0,0,0,0.1)' 
-//                 }}>
-//                     <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '15px' }}>
-//                         {!isListCollapsed && <b style={{fontSize: '16px', color:'#0084ff'}}>📋 Kết quả gợi ý</b>}
-//                         <button onClick={() => setIsListCollapsed(!isListCollapsed)} style={{cursor:'pointer', border:'none', background:'#eee', padding:'2px 8px', borderRadius:'4px'}}>
-//                             {isListCollapsed ? '▶' : '◀'}
-//                         </button>
-//                     </div>
-
-//                     {!isListCollapsed && suggestedProducts.map((p, i) => (
-//                         <div key={p._id} style={{ display: 'flex', gap: '15px', marginBottom: '15px', borderBottom: '1px solid #f5f5f5', paddingBottom: '10px' }}>
-//                             <img src={p.images?.[0]?.url || p.image_url} alt="" style={{width:'50px', height:'50px', objectFit:'contain'}} />
-//                             <div style={{fontSize:'13px'}}>
-//                                 <div style={{fontWeight:'bold'}}>{i+1}. {p.name}</div>
-//                                 <div style={{color:'red'}}>{p.price?.toLocaleString()}đ</div>
-//                             </div>
-//                         </div>
-//                     ))}
-//                 </div>
-//             )}
-
-//             {/* NÚT VÀ CỬA SỔ CHAT BÊN PHẢI */}
-//             <div style={{ position: 'fixed', bottom: '30px', right: '30px', zIndex: 99999 }}>
-//                 {isOpen && (
-//                     <div style={{ 
-//                         width: '350px', height: '500px', background: '#fff', borderRadius: '15px', 
-//                         boxShadow: '0 10px 30px rgba(0,0,0,0.2)', display: 'flex', flexDirection: 'column',
-//                         overflow: 'hidden', border: '1px solid #ddd', marginBottom: '12px'
-//                     }}>
-//                         <div style={{ background: '#0084ff', color: '#fff', padding: '12px 15px', fontWeight: 'bold', display: 'flex', justifyContent: 'space-between' }}>
-//                             <span>🤖 Trợ lý AI {userRole === 'admin' && '(Quản trị)'}</span>
-//                             <button onClick={() => setIsOpen(false)} style={{background:'none', border:'none', color:'#fff', cursor:'pointer'}}>✖</button>
-//                         </div>
-
-//                         <div ref={scrollRef} style={{ flex: 1, padding: '15px', overflowY: 'auto', background: '#fcfcfc' }}>
-//                             {messages.map((msg, index) => (
-//                                 <div key={index} style={{ textAlign: msg.sender === 'user' ? 'right' : 'left', marginBottom: '12px' }}>
-//                                     <div style={{
-//                                         display: 'inline-block', padding: '10px 14px', borderRadius: '15px',
-//                                         background: msg.sender === 'user' ? '#0084ff' : '#eee',
-//                                         color: msg.sender === 'user' ? '#fff' : '#333',
-//                                         fontSize: '13.5px', maxWidth: '85%', whiteSpace: 'pre-line'
-//                                     }}>
-//                                         {msg.text}
-//                                     </div>
-//                                 </div>
-//                             ))}
-//                             {loading && <div style={{fontSize:'11px', color:'#999'}}>Đang xử lý dữ liệu...</div>}
-//                         </div>
-
-//                         <div style={{ padding: '10px', borderTop: '1px solid #eee', display: 'flex', gap: '8px' }}>
-//                             <input 
-//                                 type="text" value={input} 
-//                                 onChange={(e) => setInput(e.target.value)}
-//                                 onKeyPress={(e) => e.key === 'Enter' && sendMessage()}
-//                                 placeholder="Bạn cần hỗ trợ gì?"
-//                                 style={{ flex: 1, padding: '8px 15px', borderRadius: '20px', border: '1px solid #ddd', outline:'none' }}
-//                             />
-//                             <button onClick={sendMessage} style={{ background: '#0084ff', color: '#fff', border: 'none', padding: '0 15px', borderRadius: '20px', cursor: 'pointer' }}>Gửi</button>
-//                         </div>
-//                     </div>
-//                 )}
-                
-//                 <button 
-//                     onClick={() => setIsOpen(!isOpen)}
-//                     style={{ 
-//                         width: '55px', height: '55px', borderRadius: '50%', background: '#0084ff', 
-//                         color: '#fff', border: 'none', cursor: 'pointer', fontSize: '22px',
-//                         boxShadow: '0 5px 15px rgba(0,132,255,0.3)'
-//                     }}
-//                 >
-//                     {isOpen ? '✖' : '💬'}
-//                 </button>
-//             </div>
-//         </Fragment>
-//     );
-// };
-
-// export default Chatbot;
