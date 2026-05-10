@@ -83,28 +83,30 @@ const handleTopSellingProducts = async () => {
 };
 
 // 4. HÀM MỚI: THỐNG KÊ SỐ LƯỢNG TỔNG QUÁT (Theo yêu cầu của bạn bạn)
-const handleGeneralStats = async () => {
+const handleGeneralStats = async (statType) => {
     try {
-        // Chạy song song 4 lệnh đếm để web không bị chậm
-        const [userCount, productCount, orderCount, discountCount] = await Promise.all([
-            User.countDocuments(),
-            Product.countDocuments(),
-            Order.countDocuments(),
-            Discount.countDocuments()
-        ]);
-        
+        const stats = {};
+        // Chỉ đếm những gì cần thiết để tối ưu hiệu năng
+        if (!statType || statType === 'all' || statType === 'users') stats.users = await User.countDocuments();
+        if (!statType || statType === 'all' || statType === 'products') stats.products = await Product.countDocuments();
+        if (!statType || statType === 'all' || statType === 'orders') stats.orders = await Order.countDocuments();
+        if (!statType || statType === 'all' || statType === 'discounts') stats.discounts = await Discount.countDocuments();
+
+        // Tự động soạn câu trả lời phù hợp với yêu cầu
+        let message = "Dạ đây là số liệu thống kê hệ thống:";
+        if (statType === 'users') message = `Dạ hệ thống hiện có tổng cộng **${stats.users}** người dùng ạ.`;
+        else if (statType === 'products') message = `Dạ hiện đang có **${stats.products}** sản phẩm trên kệ hàng ạ.`;
+        else if (statType === 'orders') message = `Dạ tổng cộng đã có **${stats.orders}** đơn hàng được khởi tạo trên hệ thống ạ.`;
+        else if (statType === 'discounts') message = `Dạ hiện có **${stats.discounts}** mã giảm giá đang hoạt động ạ.`;
+
         return {
             type: "admin_general_stats",
-            message: "Dạ đây là thống kê số lượng tổng quát trên hệ thống hiện tại:",
-            data: {
-                users: userCount,
-                products: productCount,
-                orders: orderCount,
-                discounts: discountCount
-            }
+            statType: statType || 'all',
+            message,
+            data: stats
         };
     } catch (error) {
-        return { type: "text", message: "Lỗi khi truy xuất số liệu hệ thống." };
+        return { type: "text", message: "Lỗi khi truy xuất số liệu." };
     }
 };
 
@@ -159,9 +161,12 @@ Dựa vào ý định của khách hàng, hãy chọn ĐÚNG 1 trong các cấu 
 - Admin hỏi dự báo xu hướng: {"adminAction": "PREDICT_TREND"}
 - Admin hỏi top bán chạy: {"adminAction": "TOP_SELLING_PRODUCTS"}
 
-9. THỐNG KÊ SỐ LƯỢNG TỔNG QUÁT (DÀNH CHO ADMIN):
-- Khách (Admin) hỏi có bao nhiêu sản phẩm, bao nhiêu người dùng, bao nhiêu mã giảm giá, hoặc tổng số lượng đơn hàng trên hệ thống.
-- TRẢ VỀ: {"adminAction": "GENERAL_STATS"}`;
+9. THỐNG KÊ SỐ LƯỢNG (DÀNH CHO ADMIN):
+- Nếu hỏi chung chung (vd: "thống kê hệ thống"): {"adminAction": "GENERAL_STATS", "statType": "all"}
+- Nếu chỉ hỏi người dùng: {"adminAction": "GENERAL_STATS", "statType": "users"}
+- Nếu chỉ hỏi sản phẩm: {"adminAction": "GENERAL_STATS", "statType": "products"}
+- Nếu chỉ hỏi đơn hàng: {"adminAction": "GENERAL_STATS", "statType": "orders"}
+- Nếu chỉ hỏi mã giảm giá: {"adminAction": "GENERAL_STATS", "statType": "discounts"}`;
 
         const fullPrompt = `
 ${systemPrompt}
@@ -201,7 +206,7 @@ ${history || "Chưa có lịch sử"}
                     return res.status(200).json(topProducts);
                 }
                 if (aiData.adminAction === "GENERAL_STATS") {
-                    const stats = await handleGeneralStats();
+                    const stats = await handleGeneralStats(aiData.statType);
                     return res.status(200).json(stats);
                 }
             }

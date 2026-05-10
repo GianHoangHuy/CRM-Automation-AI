@@ -149,11 +149,17 @@ const Chatbot = () => {
                 finalAiMessage = `💡 **Dự báo**: ${data.message}\n🚀 **Đề xuất**: ${data.suggestion}`;
             }
             if (data.type === 'admin_general_stats' && data.data) {
-                finalAiMessage = `${data.message}
-                👥 Tổng người dùng: **${data.data.users}**
-                📦 Tổng sản phẩm: **${data.data.products}**
-                📑 Tổng đơn hàng: **${data.data.orders}**
-                🎟️ Mã giảm giá: **${data.data.discounts}**`;
+                if (data.statType !== 'all') {
+                    // Nếu hỏi riêng lẻ, chỉ hiện câu trả lời ngắn gọn từ Backend
+                    finalAiMessage = data.message;
+                } else {
+                    // Nếu hỏi tổng quát, hiện cái "Dashboard thu nhỏ" như cũ
+                    finalAiMessage = `${data.message}
+                    👥 Người dùng: **${data.data.users}**
+                    📦 Sản phẩm: **${data.data.products}**
+                    📑 Đơn hàng: **${data.data.orders}**
+                    🎟️ Mã giảm giá: **${data.data.discounts}**`;
+                }
             }
 
             // ==========================================
@@ -240,24 +246,37 @@ const Chatbot = () => {
                     padding: isListCollapsed ? '15px 5px' : '30px',
                     boxShadow: isListCollapsed ? '0 4px 10px rgba(0,0,0,0.1)' : '0 10px 40px rgba(0,0,0,0.2)' 
                 }}>
-                    <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', margin: '0 0 20px 0', borderBottom: '2px solid #0084ff', paddingBottom: '10px' }}>
-                        <h4 style={{ margin: 0, fontSize: '20px', color: '#333', display: isListCollapsed ? 'none' : 'block' }}>
+                    <div style={{ 
+                        display: 'flex', justifyContent: 'space-between', alignItems: 'center', 
+                        margin: '0 0 20px 0', 
+                        borderBottom: isListCollapsed ? 'none' : '2px solid #0084ff', 
+                        paddingBottom: isListCollapsed ? '0' : '10px', 
+                        flexDirection: isListCollapsed ? 'column' : 'row', 
+                        gap: '8px' 
+                    }}>
+                        <h4 style={{ margin: 0, fontSize: '18px', color: '#333', display: isListCollapsed ? 'none' : 'block' }}>
                             📋 Kết quả từ AI
                         </h4>
                         
-                        <button 
-                            onClick={() => setIsListCollapsed(true)}
-                            style={{ background: '#f1f0f0', border: '1px solid #ccc', padding: '5px 10px', borderRadius: '5px', fontSize: '13px', cursor: 'pointer', color: '#333', display: isListCollapsed ? 'none' : 'block', fontWeight: 'bold' }}
-                        >
-                            Thu gọn {'[<<]'}
-                        </button>
-
-                        <button 
-                            onClick={() => setIsListCollapsed(false)}
-                            style={{ background: '#0084ff', border: 'none', padding: '10px 5px', borderRadius: '5px', fontSize: '13px', cursor: 'pointer', color: '#fff', display: isListCollapsed ? 'block' : 'none', width: '100%', textAlign: 'center', fontWeight: 'bold' }}
-                        >
-                            {'[>>]'}
-                        </button>
+                        <div style={{ display: 'flex', gap: '5px', flexDirection: isListCollapsed ? 'column' : 'row', width: isListCollapsed ? '100%' : 'auto' }}>
+                            {/* Nút Thu gọn / Mở rộng */}
+                            <button 
+                                onClick={() => setIsListCollapsed(!isListCollapsed)}
+                                style={{ background: isListCollapsed ? '#0084ff' : '#f1f0f0', border: isListCollapsed ? 'none' : '1px solid #ccc', padding: isListCollapsed ? '8px 0' : '5px 10px', borderRadius: '5px', fontSize: '13px', cursor: 'pointer', color: isListCollapsed ? '#fff' : '#333', fontWeight: 'bold', width: '100%', textAlign: 'center' }}
+                            >
+                                {isListCollapsed ? '[>>]' : 'Thu gọn [<<]'}
+                            </button>
+                            <button 
+                                onClick={() => {
+                                    setSuggestedProducts([]);
+                                    setIsListCollapsed(false);
+                                }}
+                                style={{ background: '#e74c3c', border: 'none', padding: isListCollapsed ? '8px 0' : '5px 10px', borderRadius: '5px', fontSize: '13px', cursor: 'pointer', color: '#fff', fontWeight: 'bold', width: '100%', textAlign: 'center' }}
+                                title="Đóng hẳn bảng này"
+                            >
+                                {isListCollapsed ? '✖' : 'Đóng [X]'}
+                            </button>
+                        </div>
                     </div>
 
                     {!isListCollapsed && suggestedProducts.map((p, i) => {
