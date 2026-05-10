@@ -258,7 +258,7 @@ const Chatbot = () => {
                             📋 Kết quả từ AI
                         </h4>
                         
-                        <div style={{ display: 'flex', gap: '5px', flexDirection: isListCollapsed ? 'column' : 'row', width: isListCollapsed ? '100%' : 'auto' }}>
+                        <div style={{ display: 'flex', gap: '5px', flexDirection: isListCollapsed ? 'column-reverse' : 'row', width: isListCollapsed ? '100%' : 'auto' }}>
                             {/* Nút Thu gọn / Mở rộng */}
                             <button 
                                 onClick={() => setIsListCollapsed(!isListCollapsed)}
