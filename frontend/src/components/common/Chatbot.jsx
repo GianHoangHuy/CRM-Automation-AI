@@ -148,6 +148,13 @@ const Chatbot = () => {
             if (data.type === 'admin_predict') {
                 finalAiMessage = `💡 **Dự báo**: ${data.message}\n🚀 **Đề xuất**: ${data.suggestion}`;
             }
+            if (data.type === 'admin_general_stats' && data.data) {
+                finalAiMessage = `${data.message}
+                👥 Tổng người dùng: **${data.data.users}**
+                📦 Tổng sản phẩm: **${data.data.products}**
+                📑 Tổng đơn hàng: **${data.data.orders}**
+                🎟️ Mã giảm giá: **${data.data.discounts}**`;
+            }
 
             // ==========================================
             // XỬ LÝ LOGIC UI & GIỎ HÀNG (DÀNH CHO USER VÀ ADMIN NẾU CẦN)
